@@ -70,7 +70,7 @@ const ContactForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 transition duration-300 py-2 rounded-lg font-semibold mt-2 text-white"
+          className="w-full bg-gradient-to-r from-blue-400 to-blue-600 bg-blue-500 hover:bg-blue-600 transition duration-300 py-2 rounded-lg font-semibold mt-2 text-white"
         >
           Send Message
         </button>

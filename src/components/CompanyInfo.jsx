@@ -234,13 +234,13 @@ const CompanyInfo = () => {
             </div>
 
             {/* Our Infrastructure */}
-            <div className="bg-gray-100 rounded-xl p-6 mb-8 shadow-lg" ref={(el) => (sectionsRef.current[1] = el)}>
+            <div className="bg-gray-200 rounded-xl p-6 mb-8 shadow-xl" ref={(el) => (sectionsRef.current[1] = el)}>
                 <div className="mb-10 flex justify-center">
                     <video
                         autoPlay
                         muted
                         loop
-                        className="h-64 w-64"
+                        className="h-24 rounded-full w-64"
                     >
                         <source src="Infrastructure.mp4" type="video/mp4" />
                     </video>
@@ -256,13 +256,13 @@ const CompanyInfo = () => {
             </div>
 
             {/* Our Mission */}
-            <div className="bg-gray-100 rounded-xl p-6 mb-8 shadow-lg" ref={(el) => (sectionsRef.current[2] = el)}>
+            <div className="bg-gray-200 rounded-xl p-6 mb-8 shadow-xl" ref={(el) => (sectionsRef.current[2] = el)}>
                 <div className="mb-10 flex justify-center">
                     <video
                         autoPlay
                         muted
                         loop
-                        className="h-64 w-64"
+                        className="h-24 rounded-full w-64"
                     >
                         <source src="mission.mp4" type="video/mp4" />
                     </video>
@@ -278,13 +278,13 @@ const CompanyInfo = () => {
             </div>
 
             {/* Our Vision */}
-            <div className="bg-gray-100 rounded-xl p-6 shadow-lg" ref={(el) => (sectionsRef.current[3] = el)}>
+            <div className="bg-gray-200 rounded-xl p-6 shadow-xl" ref={(el) => (sectionsRef.current[3] = el)}>
                 <div className="mb-10 flex justify-center">
                     <video
                         autoPlay
                         muted
                         loop
-                        className="h-64 w-64"
+                        className="h-24 w-64"
                     >
                         <source src="Vision.mp4" type="video/mp4" />
                     </video>

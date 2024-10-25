@@ -6,9 +6,21 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         
         {/* Contact Us Section */}
+
+        <div className="space-y-2"> 
+
+        <h1 className="font-bold  text-2xl ">Why Us?</h1>
+            <ul className="ml-4 list-disc">
+              <li>High-quality products</li>
+              <li>Advanced infrastructure</li>
+              <li>Customization options</li>
+              <li>Timely delivery</li>
+          </ul>
+          </div>
+        
         <div>
           <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
-          <p>J K Technoplast Private Limited</p>
+          <p>JK Pipes Private Limited</p>
           <p>Established in 2012 at Jalna, Maharashtra</p>
           <p>Manufacturer of PVC Pipe, HDPE Pipe, SWR Pipe, and more.</p>
           <p>Address: Plot Number A-9/1/2, Additional MIDC Area, Jalna-431203, Maharashtra, India</p>
@@ -44,19 +56,13 @@ const Footer = () => {
             <li>Payment Modes: Cash, Credit Card, Cheque, DD, Online</li>
             <li>Shipment Mode: By Road</li>
             <li>Quality Assurance: Strict testing standards to ensure flawless products</li>
-            <li>Why Us?</li>
-            <ul className="ml-4 list-disc">
-              <li>High-quality products</li>
-              <li>Advanced infrastructure</li>
-              <li>Customization options</li>
-              <li>Timely delivery</li>
-            </ul>
+            
           </ul>
         </div>
       </div>
 
       <div className="border-t border-gray-700 mt-8 pt-4 text-center">
-        <p className="text-sm">&copy; 2024 J K Technoplast Private Limited. All Rights Reserved.</p>
+        <p className="text-md font-bold">&copy; 2024 JK Pipes Private Limited. All Rights Reserved.</p>
       </div>
     </footer>
   );

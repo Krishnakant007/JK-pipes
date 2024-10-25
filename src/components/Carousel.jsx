@@ -208,6 +208,108 @@
 
 
 
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const VideoComponent = () => {
+//   const videoRef = useRef(null); // Reference to the video element
+//   const textRef = useRef(null); // Reference to the text element
+//   const videoSrc = "1025.mp4"; // Single video file
+//   const [showFirstSet, setShowFirstSet] = useState(true);
+
+//   // Define the two sets of items
+//   const firstSet = [
+//     "✔️ JK PVC Pipe",
+//     "✔️ PVC Drainage Pipe",
+//     "✔️ Rigid PVC Pipe",
+//     "✔️ Irrigation PVC Pipe",
+//     "✔️ 160mm PVC Pipe",
+//     "✔️ 75MM PVC Pipe",
+//   ];
+//   const secondSet = [
+//     "✔️ 160mm HDPE Pipe",
+//     "✔️ Agricultural HDPE Pipe",
+//     "✔️ HDPE Water Pipe",
+//     "✔️ JK HDPE Pipe",
+//     "✔️ Black HDPE Pipe",
+//   ];
+
+//   useEffect(() => {
+//     // Function to animate text switch
+//     const switchTextSet = () => {
+//       gsap.to(textRef.current, { opacity: 0, duration: 1, ease: "power1.inOut" });
+//       setTimeout(() => {
+//         setShowFirstSet((prev) => !prev); // Toggle between text sets
+//         gsap.fromTo(
+//           textRef.current,
+//           { opacity: 0, x: -50 },
+//           { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//         );
+//       }, 1000); // Wait for fade-out to complete
+//     };
+
+//     // Initial animation for the first set
+//     gsap.fromTo(
+//       textRef.current,
+//       { opacity: 0, x: -50 },
+//       { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//     );
+
+//     // Set interval for looping between the two text sets
+//     const interval = setInterval(() => {
+//       switchTextSet();
+//     }, showFirstSet ? 5000 : 10000); // First set for 5 sec, second set for 10 sec
+
+//     // Intersection Observer to play/pause video
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           videoRef.current.play(); // Play video when in view
+//         } else {
+//           videoRef.current.pause(); // Pause video when out of view
+//         }
+//       },
+//       { threshold: 0 } // Trigger when any part of the video is out of view
+//     );
+
+//     if (videoRef.current) {
+//       observer.observe(videoRef.current);
+//     }
+
+//     return () => {
+//       clearInterval(interval); // Clear interval on component unmount
+//       if (videoRef.current) observer.unobserve(videoRef.current);
+//     };
+//   }, [showFirstSet]);
+
+//   return (
+//     <div className="relative flex justify-center items-center p-0 m-0 w-full h-auto">
+//       <video
+//         ref={videoRef}
+//         src={videoSrc}
+//         className="w-full h-full object-cover"
+//         autoPlay
+//         muted
+//         loop
+//         playsInline
+//         style={{ opacity: 1 }}
+//       />
+//       <div
+//         ref={textRef}
+//         className="absolute left-4 top-1/4 flex flex-col text-white text-lg md:text-2xl font-semibold space-y-2"
+//         style={{ pointerEvents: "none" }}
+//       >
+//         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
+//           <div key={index}>{item}</div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default VideoComponent;
+
+
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
@@ -283,7 +385,7 @@ const VideoComponent = () => {
   }, [showFirstSet]);
 
   return (
-    <div className="relative flex justify-center items-center p-0 m-0 w-full h-auto">
+    <div className="relative flex justify-center items-center p-0 m-0 w-full h-auto overflow-hidden">
       <video
         ref={videoRef}
         src={videoSrc}
@@ -296,11 +398,13 @@ const VideoComponent = () => {
       />
       <div
         ref={textRef}
-        className="absolute left-4 top-1/4 flex flex-col text-white text-lg md:text-2xl font-semibold space-y-2"
-        style={{ pointerEvents: "none" }}
+        className="absolute left-0 top-1/4 max-w-full w-4/5 px-2 text-white text-lg md:text-2xl font-semibold space-y-2"
+        style={{ pointerEvents: "none", overflow: "hidden" }}
       >
         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
-          <div key={index}>{item}</div>
+          <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+            {item}
+          </div>
         ))}
       </div>
     </div>
