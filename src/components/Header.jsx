@@ -317,15 +317,15 @@
 
 
 
+
+
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 
-const Header = () => {
+const Header = ({ setActiveSection }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const logoRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -355,6 +355,11 @@ const Header = () => {
     };
   }, []);
 
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+    setIsMobileMenuOpen(false); // Close mobile menu on section change
+  };
+
   return (
     <header className={`sticky top-0 z-50 shadow-xl transition-all duration-300 ${isScrolled ? 'bg-blue-500' : 'bg-transparent'}`}>
       <div className="relative">
@@ -366,21 +371,15 @@ const Header = () => {
             height={50}
             alt="Logo"
             className="rounded-md cursor-pointer"
-            onClick={() => navigate('/')}
+            onClick={() => handleSectionChange('home')}
           />
           <div className="hidden md:flex space-x-8">
-            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => navigate('/products')}>Products</h1>
-            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => navigate('/contact')}>Contact</h1>
-            <h2 className="py-2 font-extrabold cursor-pointer" onClick={() => navigate('/about')}>About</h2>
+            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => handleSectionChange('products')}>Products</h1>
+            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => handleSectionChange('contact')}>Contact</h1>
+            <h2 className="py-2 font-extrabold cursor-pointer" onClick={() => handleSectionChange('about')}>About</h2>
           </div>
-          <div className="flex items-center space-x-4 text-white">
+          <div className="flex items-center space-x-4 text-black">
             <span className="hidden md:inline-flex text-lg">📞 9405799633</span>
-            <a href="https://wa.me/919405799633" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
-                <path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"></path>
-                <path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"></path>
-              </svg>
-            </a>
             <span className="md:hidden text-lg">📞 9405799633</span>
           </div>
           <button
@@ -401,9 +400,9 @@ const Header = () => {
         </div>
         {isMobileMenuOpen && (
           <div className="md:hidden flex flex-col items-start px-10 space-y-4">
-            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => navigate('/products')}>Products</h1>
-            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => navigate('/contact')}>Contact</h1>
-            <h2 className="py-2 font-extrabold cursor-pointer" onClick={() => navigate('/about')}>About</h2>
+            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => handleSectionChange('products')}>Products</h1>
+            <h1 className="py-2 font-extrabold cursor-pointer" onClick={() => handleSectionChange('contact')}>Contact</h1>
+            <h2 className="py-2 font-extrabold cursor-pointer" onClick={() => handleSectionChange('about')}>About</h2>
           </div>
         )}
       </div>
@@ -412,3 +411,5 @@ const Header = () => {
 };
 
 export default Header;
+
+ 
