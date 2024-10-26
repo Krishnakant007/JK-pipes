@@ -254,10 +254,36 @@
 // export default SWRProductScreen;
 
 
-import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import RatingCarousel from '../components/RatingCarousel';
+import { useNavigate } from 'react-router-dom';
+import { useState,useEffect, useRef } from 'react'
+
 
 const SWRProductScreen = () => {
+    const navigate = useNavigate()
+    const [showBackButton, setShowBackButton] = useState(false);
+
+
+    
+  useEffect(() => {
+    const handleScroll = () => {
+        const header = document.getElementById('header'); // Assuming the header has an id="header"
+        const scrollY = window.scrollY;
+
+        // Show the back button if header is not present or if the scroll position is past the header height
+        if (!header || scrollY > header.clientHeight) {
+            setShowBackButton(true);
+        } else {
+            setShowBackButton(false);
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check for header presence on load
+    return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+  
     const products = [
         {
             name: "JK SWR Pipe",
@@ -339,6 +365,14 @@ const SWRProductScreen = () => {
 
     return (
         <div className="py-12 px-8 bg-slate-200 min-h-screen">
+            
+        <button 
+        onClick={() => navigate(-1)}
+        className="fixed top-4 left-4 bg-black text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out z-50"
+    >
+        ← Back
+            </button>
+            
             <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">SWR Pipes</h2>
             <p className="text-center mb-12 text-lg text-gray-600">Detailed information about our SWR Pipes selection:</p>
 
@@ -429,6 +463,7 @@ const SWRProductScreen = () => {
                     </div>
                 ))}
             </div>
+            <RatingCarousel/>
         </div>
     );
 };

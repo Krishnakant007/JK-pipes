@@ -406,14 +406,39 @@
 
 
 
-import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import RatingCarousel from "../components/RatingCarousel";
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const PVCProductScreen = () => {
+
+    const navigate = useNavigate()
+  const [showBackButton, setShowBackButton] = useState(false);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+        const header = document.getElementById('header'); // Assuming the header has an id="header"
+        const scrollY = window.scrollY;
+
+        // Show the back button if header is not present or if the scroll position is past the header height
+        if (!header || scrollY > header.clientHeight) {
+            setShowBackButton(true);
+        } else {
+            setShowBackButton(false);
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check for header presence on load
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+    
     const products = [
         {
                         name: "JK PVC Pipe",
@@ -586,6 +611,12 @@ const PVCProductScreen = () => {
 
     return (
         <div className="py-12 px-8 bg-slate-200 min-h-screen">
+        <button 
+        onClick={() => navigate(-1)}
+        className="fixed top-4 left-4 bg-black text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out z-50"
+    >
+        ← Back
+    </button>
             <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">PVC Pipes</h2>
             <p className="text-center mb-12 text-lg text-gray-600">Explore our high-quality selection of PVC pipes:</p>
 
@@ -618,6 +649,7 @@ const PVCProductScreen = () => {
                     </div>
                 ))}
             </div>
+            <RatingCarousel/>
         </div>
     );
 };

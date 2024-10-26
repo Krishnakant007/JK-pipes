@@ -37,7 +37,7 @@
 // export default App;
 
 
-
+// <Route path="/" element={<CompanyInfo />} />
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -54,6 +54,7 @@ import PVCProductScreen from './screens/PVCProductScreen';
 import HDPECoilScreen from './screens/HDPECoilScreen';
 import UPVCProductScreen from './screens/UPVCProductScreen';
 import RatingCarousel from './components/RatingCarousel';
+import DetailScreen from './details/DetailScreen';
 
 function App() {
   return (
@@ -75,7 +76,8 @@ function App() {
         <Route path="/pvc" element={<PVCProductScreen />} />
         <Route path="/hdpecoil" element={<HDPECoilScreen />} />
         <Route path="/upvc" element={<UPVCProductScreen />} />
-
+       
+            <Route path="/details" element={<DetailScreen />} />
       </Routes>
       <Footer />
     </Router>
