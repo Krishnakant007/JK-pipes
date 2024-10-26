@@ -42,6 +42,8 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/Header";
+import HeaderText from "./components/HeaderText";
+
 import Footer from './components/Footer';
 import ReachUs from './components/ReachUs';
 import CompanyInfo from './components/CompanyInfo';
@@ -64,6 +66,7 @@ function App() {
         <Route path="/" element={
           <>
             <Carousel />
+            <HeaderText/>
             <CompanyInfo />
             <ProductCategories />
             <RatingCarousel/>

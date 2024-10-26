@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
         
         <div>
-          <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
+          <h2 className="text-lg font-semibold mb-4">Reach Us</h2>
           <p>JK Pipes Private Limited</p>
           <p>Established in 2012 at Jalna, Maharashtra</p>
           <p>Manufacturer of PVC Pipe, HDPE Pipe, SWR Pipe, and more.</p>

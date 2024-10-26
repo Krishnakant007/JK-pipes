@@ -326,7 +326,7 @@ const VideoComponent = () => {
     "✔️ Rigid PVC Pipe",
     "✔️ Irrigation PVC Pipe",
     "✔️ 160mm PVC Pipe",
-    "✔️ 75MM PVC Pipe",
+   
   ];
   const secondSet = [
     "✔️ 160mm HDPE Pipe",
@@ -385,7 +385,7 @@ const VideoComponent = () => {
   }, [showFirstSet]);
 
   return (
-    <div className="relative flex justify-center items-center p-0 m-0 w-full h-auto overflow-hidden">
+    <div className="relative flex justify-center items-center p-0 m-0 w-full h-auto overflow-hidden pb-20 ">
       <video
         ref={videoRef}
         src={videoSrc}
@@ -402,7 +402,7 @@ const VideoComponent = () => {
         style={{ pointerEvents: "none", overflow: "hidden" }}
       >
         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
-          <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+          <div key={index} className="whitespace-nowrap overflow-hidden  text-ellipsis">
             {item}
           </div>
         ))}
