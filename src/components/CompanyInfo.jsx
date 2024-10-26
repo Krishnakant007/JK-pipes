@@ -303,3 +303,25 @@ const CompanyInfo = () => {
 };
 
 export default CompanyInfo;
+
+
+
+// Condominium complex in Jalna, Maharashtra
+// Address: RVW7+RFV, Nagpur - Aurangabad - Mumbai Hwy, Jalna Industrial Area MIDC, Jalna, Maharashtra 431213
+// Hours: 
+// Saturday	10am–5:30pm
+// Sunday	10am–5:30pm
+// Monday	10am–5:30pm
+// Tuesday	10am–5:30pm
+// Wednesday	10am–5:30pm
+// Thursday
+// (Diwali)
+// 10am–5:30pm
+// Hours might differ
+// Friday	10am–5:30pm
+// Suggest new hours
+
+
+
+// Phone: 094057 99633
+// Suggest an edit · 

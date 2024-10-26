@@ -1,36 +1,84 @@
 
 
-// import Tailwind from './components/Tailwind';
-import Carousel from './components/Carousel';
-import ProductCategories from './components/ProductCategories';
-// import CompanyVideo from './components/CompanyVideo';
-// import AboutUs from './components/AboutUs';
-// import ContactUs from './components/ContactUs';
-// import Footer from './components/Footer';
+// // import Tailwind from './components/Tailwind';
+// import Carousel from './components/Carousel';
+// import ProductCategories from './components/ProductCategories';
+// // import CompanyVideo from './components/CompanyVideo';
+// // import AboutUs from './components/AboutUs';
+// // import ContactUs from './components/ContactUs';
+// // import Footer from './components/Footer';
 
+// import Header from "./components/Header";
+// import Footer from './components/Footer';
+// import ReachUs from './components/ReachUs';
+// import CompanyInfo from './components/CompanyInfo';
+// import ContactForm from './components/ContactForm';
+
+// function App() {
+//   return (
+//     <div>
+    
+      
+    
+//       <Header />
+//       <Carousel />
+//       <CompanyInfo/>
+//       <ProductCategories />
+//      <ContactForm/>
+//       <ReachUs/>
+//       <Footer />
+      
+
+    
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from './components/Footer';
 import ReachUs from './components/ReachUs';
 import CompanyInfo from './components/CompanyInfo';
 import ContactForm from './components/ContactForm';
+import Carousel from './components/Carousel';
+import ProductCategories from './components/ProductCategories';
+import SWRProductScreen from './screens/SWRProductScreen';
+import HDPEProductScreen from './screens/HDPEProductScreen';
+import PVCProductScreen from './screens/PVCProductScreen';
+import HDPECoilScreen from './screens/HDPECoilScreen';
+import UPVCProductScreen from './screens/UPVCProductScreen';
+import RatingCarousel from './components/RatingCarousel';
 
 function App() {
   return (
-    <div>
-    
-      
-    
+    <Router>
       <Header />
-      <Carousel />
-      <CompanyInfo/>
-      <ProductCategories />
-     <ContactForm/>
-      <ReachUs/>
-      <Footer />
-      
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Carousel />
+            <CompanyInfo />
+            <ProductCategories />
+            <RatingCarousel/>
+            <ContactForm />
+            <ReachUs />
+          </>
+        } />
+        <Route path="/swr" element={<SWRProductScreen />} />
+        <Route path="/hdpe" element={<HDPEProductScreen />} />
+        <Route path="/pvc" element={<PVCProductScreen />} />
+        <Route path="/hdpecoil" element={<HDPECoilScreen />} />
+        <Route path="/upvc" element={<UPVCProductScreen />} />
 
-    
-    </div>
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
