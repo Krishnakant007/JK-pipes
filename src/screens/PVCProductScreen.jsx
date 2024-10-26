@@ -406,6 +406,8 @@
 
 
 
+
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RatingCarousel from "../components/RatingCarousel";
@@ -416,181 +418,184 @@ import { useEffect, useState } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 const PVCProductScreen = () => {
+    const navigate = useNavigate();
+    const [showBackButton, setShowBackButton] = useState(false);
 
-    const navigate = useNavigate()
-  const [showBackButton, setShowBackButton] = useState(false);
+    // Scroll to top when component mounts
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const header = document.getElementById('header'); // Assuming the header has an id="header"
+            const scrollY = window.scrollY;
 
-  useEffect(() => {
-    const handleScroll = () => {
-        const header = document.getElementById('header'); // Assuming the header has an id="header"
-        const scrollY = window.scrollY;
+            // Show the back button if header is not present or if the scroll position is past the header height
+            if (!header || scrollY > header.clientHeight) {
+                setShowBackButton(true);
+            } else {
+                setShowBackButton(false);
+            }
+        };
 
-        // Show the back button if header is not present or if the scroll position is past the header height
-        if (!header || scrollY > header.clientHeight) {
-            setShowBackButton(true);
-        } else {
-            setShowBackButton(false);
-        }
-    };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial check for header presence on load
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check for header presence on load
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-    
     const products = [
         {
-                        name: "JK PVC Pipe",
-                        price: "₹ 470/ Piece",
-                        usage: "Agricultural",
-                        material: "PVC",
-                        thickness: "2 mm",
-                        diameter: "Other",
-                        length: "6 m",
-                        workingPressure: "4 Kg/sqcm",
-                        pipeClass: "Schedule 40",
-                        jointType: "Sol fit",
-                        imageUrl: "/images/jk-pvc-pipe.webp",
-                    },
-                    {
-                        name: "PVC Drainage Pipe",
-                        price: "₹ 350/ Piece",
-                        material: "PVC",
-                        diameter: "110 mm",
-                        length: "6 m",
-                        brand: "JK",
-                        type: "Type A",
-                        jointType: "Sol fit",
-                        usage: "Plumbing",
-                        color: "Grey",
-                        origin: "Made in India",
-                        imageUrl: "/images/PvcDrainagePipe.webp",
-                    },
-                   
-                    
-                 
-                {
-                    "name": "Rigid PVC Pipe",
-                    "price": "₹ 900/ Piece",
-                    "usage": "Agricultural",
-                    "size": "90 mm",
-                    "length": "6 m",
-                    "workingPressure": "4 Kg/sqcm",
-                    "pipeClass": "Schedule 40",
-                    "origin": "Made in India",
-                    "imageUrl": "/images/RigidPvcPipe.webp"
-                },
-                {
-                    "name": "Irrigation PVC Pipe",
-                    "price": "₹ 470/ Piece",
-                    "usage": "Agricultural",
-                    "length": "6 m",
-                    "workingPressure": "2.5 Kg/sqcm",
-                    "pipeClass": "Schedule 40",
-                    "pipeJointType": "Ring fit/ Push fit",
-                    "imageUrl": "/images/IrrigationPvcPipe.webp"
-                },
-                {
-                    "name": "160mm PVC Pipe",
-                    "price": "₹ 478/ Piece",
-                    "brand": "JK",
-                    "usage": "Agricultural",
-                    "material": "PVC",
-                    "thickness": "2 mm",
-                    "size": "160 mm",
-                    "length": "6 m",
-                    "workingPressure": "4 Kg/sqcm",
-                    "pipeClass": "Schedule 40",
-                    "pipeJointType": "Sol fit",
-                    "imageUrl": "/images/160mmPvcPipe.webp"
-                },
-                {
-                    "name": "75MM PVC Pipe",
-                    "price": "₹ 625/ Piece",
-                    "brand": "Other",
-                    "usage": "Agricultural",
-                    "material": "PVC",
-                    "thickness": "2 mm",
-                    "size": "Other",
-                    "length": "6 m",
-                    "workingPressure": "4 Kg/sqcm",
-                    "pipeClass": "Schedule 40",
-                    "imageUrl": "/images/75mmPvcPipe.webp"
-                },
-                {
-                    "name": "White PVC Pipe",
-                    "price": "₹ 790/ Piece",
-                    "material": "PVC",
-                    "size": "200 mm",
-                    "length": "6 m",
-                    "pipeType": "Type A",
-                    "pipeJointType": "Ring fit/ Push fit",
-                    "usage": "Utilities Water",
-                    "color": "Grey",
-                    "origin": "Made in India",
-                    "imageUrl": "/images/WhitePvcPipe.webp"
-                },
-                {
-                    "name": "PVC Round Pipe",
-                    "price": "₹ 900/ Piece",
-                    "material": "PVC",
-                    "size": "3 inch",
-                    "brand": "JK",
-                    "unitLength": "6 meter",
-                    "shape": "Round (Head)",
-                    "color": "Grey",
-                    "origin": "Made in India",
-                    "imageUrl": "/images/PvcRoundPipe.webp"
-                },
-                {
-                    "name": "110Mm PVC Pipe",
-                    "price": "₹ 1,300/ Piece",
-                    "brand": "Other",
-                    "usage": "Agricultural",
-                    "size": "110 mm",
-                    "length": "6 m",
-                    "workingPressure": "4 Kg/sqcm",
-                    "pipeClass": "Schedule 40",
-                    "pipeJointType": "Sol fit",
-                    "color": "Other",
-                    "origin": "Made in India",
-                    "imageUrl": "/images/110mmPvcPipe.webp"
-                },
-                {
-                    "name": "Hollow PVC Pipe",
-                    "price": "₹ 480/ Piece",
-                    "brand": "JK",
-                    "material": "PVC",
-                    "size": "180 mm",
-                    "length": "6 m",
-                    "pipeType": "Type A",
-                    "pipeJointType": "Ring fit/ Push fit",
-                    "usage": "Utilities Water",
-                    "color": "Grey",
-                    "origin": "Made in India",
-                    "imageUrl": "/images/HollowPvcPipe.webp"
-                },
-                {
-                    "name": "Grey PVC Pipe",
-                    "price": "₹ 450/ Piece",
-                    "material": "PVC",
-                    "size": "200 mm",
-                    "length": "6 m",
-                    "pipeType": "Type A",
-                    "pipeJointType": "Ring fit/ Push fit",
-                    "usage": "Utilities Water",
-                    "color": "Grey",
-                    "origin": "Made in India",
-                    "imageUrl": "/images/GreyPvcPipe.webp"
-                }
+            name: "JK PVC Pipe",
+            price: "₹ 470/ Piece",
+            usage: "Agricultural",
+            material: "PVC",
+            thickness: "2 mm",
+            diameter: "Other",
+            length: "6 m",
+            workingPressure: "4 Kg/sqcm",
+            pipeClass: "Schedule 40",
+            jointType: "Sol fit",
+            imageUrl: "/images/jk-pvc-pipe.webp",
+        },
+        {
+            name: "PVC Drainage Pipe",
+            price: "₹ 350/ Piece",
+            material: "PVC",
+            diameter: "110 mm",
+            length: "6 m",
+            brand: "JK",
+            type: "Type A",
+            jointType: "Sol fit",
+            usage: "Plumbing",
+            color: "Grey",
+            origin: "Made in India",
+            imageUrl: "/images/PvcDrainagePipe.webp",
+        },
+       
+        
+     
+    {
+        "name": "Rigid PVC Pipe",
+        "price": "₹ 900/ Piece",
+        "usage": "Agricultural",
+        "size": "90 mm",
+        "length": "6 m",
+        "workingPressure": "4 Kg/sqcm",
+        "pipeClass": "Schedule 40",
+        "origin": "Made in India",
+        "imageUrl": "/images/RigidPvcPipe.webp"
+    },
+    {
+        "name": "Irrigation PVC Pipe",
+        "price": "₹ 470/ Piece",
+        "usage": "Agricultural",
+        "length": "6 m",
+        "workingPressure": "2.5 Kg/sqcm",
+        "pipeClass": "Schedule 40",
+        "pipeJointType": "Ring fit/ Push fit",
+        "imageUrl": "/images/IrrigationPvcPipe.webp"
+    },
+    {
+        "name": "160mm PVC Pipe",
+        "price": "₹ 478/ Piece",
+        "brand": "JK",
+        "usage": "Agricultural",
+        "material": "PVC",
+        "thickness": "2 mm",
+        "size": "160 mm",
+        "length": "6 m",
+        "workingPressure": "4 Kg/sqcm",
+        "pipeClass": "Schedule 40",
+        "pipeJointType": "Sol fit",
+        "imageUrl": "/images/160mmPvcPipe.webp"
+    },
+    {
+        "name": "75MM PVC Pipe",
+        "price": "₹ 625/ Piece",
+        "brand": "JK",
+        "usage": "Agricultural",
+        "material": "PVC",
+        "thickness": "2 mm",
+        "size": "Other",
+        "length": "6 m",
+        "workingPressure": "4 Kg/sqcm",
+        "pipeClass": "Schedule 40",
+        "imageUrl": "/images/75mmPvcPipe.webp"
+    },
+    {
+        "name": "White PVC Pipe",
+        "price": "₹ 790/ Piece",
+        "material": "PVC",
+        "size": "200 mm",
+        "length": "6 m",
+        "pipeType": "Type A",
+        "pipeJointType": "Ring fit/ Push fit",
+        "usage": "Utilities Water",
+        "color": "Grey",
+        "origin": "Made in India",
+        "imageUrl": "/images/WhitePvcPipe.webp"
+    },
+    {
+        "name": "PVC Round Pipe",
+        "price": "₹ 900/ Piece",
+        "material": "PVC",
+        "size": "3 inch",
+        "brand": "JK",
+        "unitLength": "6 meter",
+        "shape": "Round (Head)",
+        "color": "Grey",
+        "origin": "Made in India",
+        "imageUrl": "/images/PvcRoundPipe.webp"
+    },
+    {
+        "name": "110Mm PVC Pipe",
+        "price": "₹ 1,300/ Piece",
+        "brand": "JK ",
+        "usage": "Agricultural",
+        "size": "110 mm",
+        "length": "6 m",
+        "workingPressure": "4 Kg/sqcm",
+        "pipeClass": "Schedule 40",
+        "pipeJointType": "Sol fit",
+        "color": "Other",
+        "origin": "Made in India",
+        "imageUrl": "/images/110mmPvcPipe.webp"
+    },
+    {
+        "name": "Hollow PVC Pipe",
+        "price": "₹ 480/ Piece",
+        "brand": "JK",
+        "material": "PVC",
+        "size": "180 mm",
+        "length": "6 m",
+        "pipeType": "Type A",
+        "pipeJointType": "Ring fit/ Push fit",
+        "usage": "Utilities Water",
+        "color": "Grey",
+        "origin": "Made in India",
+        "imageUrl": "/images/HollowPvcPipe.webp"
+    },
+    {
+        "name": "Grey PVC Pipe",
+        "price": "₹ 450/ Piece",
+        "material": "PVC",
+        "size": "200 mm",
+        "length": "6 m",
+        "pipeType": "Type A",
+        "pipeJointType": "Ring fit/ Push fit",
+        "usage": "Utilities Water",
+        "color": "Grey",
+        "origin": "Made in India",
+        "imageUrl": "/images/GreyPvcPipe.webp"
+    }
     ];
 
     useEffect(() => {
         // GSAP animation for scrolling
         const cards = gsap.utils.toArray(".product-card");
-        
-        cards.forEach((card, index) => {
+
+        cards.forEach((card) => {
             gsap.fromTo(
                 card,
                 { y: 50, opacity: 0 }, // Start from bottom with opacity 0
@@ -611,12 +616,14 @@ const PVCProductScreen = () => {
 
     return (
         <div className="py-12 px-8 bg-slate-200 min-h-screen">
-        <button 
-        onClick={() => navigate(-1)}
-        className="fixed top-4 left-4 bg-black text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out z-50"
-    >
-        ← Back
-    </button>
+            {showBackButton && (
+                <button 
+                    onClick={() => navigate(-1)}
+                    className="fixed top-4 left-4 bg-black text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out z-50"
+                >
+                    ← Back
+                </button>
+            )}
             <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">PVC Pipes</h2>
             <p className="text-center mb-12 text-lg text-gray-600">Explore our high-quality selection of PVC pipes:</p>
 
@@ -648,8 +655,19 @@ const PVCProductScreen = () => {
                         </table>
                     </div>
                 ))}
+                <div className="fixed bottom-4 right-4">
+                <a 
+                    href="https://wa.me/919405799633" // Replace 'your-number' with your WhatsApp number
+                    className="bg-green-500 text-white text-lg font-semibold px-4 py-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 ease-in-out"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                >
+                    💬 Chat on WhatsApp
+                </a>
             </div>
-            <RatingCarousel/>
+
+            </div>
+            <RatingCarousel />
         </div>
     );
 };
