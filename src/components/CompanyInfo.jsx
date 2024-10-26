@@ -625,6 +625,8 @@
 
 
 
+
+
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -697,7 +699,7 @@ const CompanyInfo = () => {
                 </div>
                 <h3 className="text-3xl font-bold mb-4">Our Infrastructure</h3>
                 <p className="text-lg text-gray-700 mb-4">
-                    We have a well-established infrastructure sprawling over an area of 22,500 Sq.Feet. We own a state-of-the-art
+                    We have a well-established infrastructure sprawling over an area of 24,500 Sq.Feet. We own a state-of-the-art
                     infrastructure that is equipped with the latest machinery and technology in our organization.
                 </p>
                 <div
@@ -779,7 +781,7 @@ const CompanyInfo = () => {
                 <h3 className="text-3xl font-bold mb-4">Our Vision</h3>
                 <p className="text-lg text-gray-700 mb-4">
                     Our vision is to be one of the most trusted manufacturers in Irrigation Equipment like HDPE Pipes and Coils,
-                    Sprinkler Irrigation Systems, HDPE Fittings, Sprinkler Pipes, and Fittings.
+                    PVC Pipes, SWR Pipes, and UPVC Pipes.
                 </p>
                 <div
                     className="overflow-hidden"
@@ -813,3 +815,4 @@ const CompanyInfo = () => {
 };
 
 export default CompanyInfo;
+
