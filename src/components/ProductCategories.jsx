@@ -489,7 +489,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProductCategories = () => {
     const productRefs = useRef([]);
-    const buttonRefs = useRef([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -513,21 +512,7 @@ const ProductCategories = () => {
             );
         });
 
-        // Slide-in button animation from right with y offset for separation
-        buttonRefs.current.forEach((button, index) => {
-            gsap.fromTo(
-                button,
-                { x: 200, opacity: 0, y: 20 },
-                {
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    delay: 0.3 + index * 0.4,
-                    ease: "power3.out",
-                }
-            );
-        });
+        // The button animation code has been removed
     }, []);
 
     // Function to handle navigation to specific screens
@@ -556,7 +541,6 @@ const ProductCategories = () => {
                         <h1 className="font-semibold"><span className="font-extrabold text-lg">4 </span> Products Available</h1>
                         <button
                             className="mt-4 py-2 w-32 sm:w-auto sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 focus:ring focus:ring-blue-300 block mx-auto"
-                            ref={(el) => (buttonRefs.current[0] = el)}
                             onClick={() => handleNavigate('/swr')}
                         >
                             View More
@@ -575,7 +559,6 @@ const ProductCategories = () => {
                         <h1 className="font-semibold"><span className="font-extrabold text-lg">5 </span> Products Available</h1>
                         <button
                             className="mt-4 py-2 w-32 sm:w-auto sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 focus:ring focus:ring-blue-300 block mx-auto"
-                            ref={(el) => (buttonRefs.current[1] = el)}
                             onClick={() => handleNavigate('/hdpe')}
                         >
                             View More
@@ -594,7 +577,6 @@ const ProductCategories = () => {
                         <h1 className="font-semibold"><span className="font-extrabold text-lg">11 </span> Products Available</h1>
                         <button
                             className="mt-4 py-2 w-32 sm:w-auto sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 focus:ring focus:ring-blue-300 block mx-auto"
-                            ref={(el) => (buttonRefs.current[2] = el)}
                             onClick={() => handleNavigate('/pvc')}
                         >
                             View More
@@ -613,7 +595,6 @@ const ProductCategories = () => {
                         <h1 className="font-semibold"><span className="font-extrabold text-lg">4 </span> Products Available</h1>
                         <button
                             className="mt-4 py-2 w-32 sm:w-auto sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 focus:ring focus:ring-blue-300 block mx-auto"
-                            ref={(el) => (buttonRefs.current[3] = el)}
                             onClick={() => handleNavigate('/hdpecoil')}
                         >
                             View More
@@ -632,7 +613,6 @@ const ProductCategories = () => {
                         <h1 className="font-semibold"><span className="font-extrabold text-lg">1 </span> Products Available</h1>
                         <button
                             className="mt-4 py-2 w-32 sm:w-auto sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 focus:ring focus:ring-blue-300 block mx-auto"
-                            ref={(el) => (buttonRefs.current[4] = el)}
                             onClick={() => handleNavigate('/upvc')}
                         >
                             View More
@@ -645,3 +625,4 @@ const ProductCategories = () => {
 };
 
 export default ProductCategories;
+
