@@ -254,6 +254,7 @@
 // export default SWRProductScreen;
 
 
+
 import { gsap } from 'gsap';
 import RatingCarousel from '../components/RatingCarousel';
 import { useNavigate } from 'react-router-dom';
@@ -261,29 +262,31 @@ import { useState,useEffect, useRef } from 'react'
 
 
 const SWRProductScreen = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [showBackButton, setShowBackButton] = useState(false);
 
+    // Scroll to top when component mounts
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    
-  useEffect(() => {
-    const handleScroll = () => {
-        const header = document.getElementById('header'); // Assuming the header has an id="header"
-        const scrollY = window.scrollY;
+    useEffect(() => {
+        const handleScroll = () => {
+            const header = document.getElementById('header'); // Assuming the header has an id="header"
+            const scrollY = window.scrollY;
 
-        // Show the back button if header is not present or if the scroll position is past the header height
-        if (!header || scrollY > header.clientHeight) {
-            setShowBackButton(true);
-        } else {
-            setShowBackButton(false);
-        }
-    };
+            // Show the back button if header is not present or if the scroll position is past the header height
+            if (!header || scrollY > header.clientHeight) {
+                setShowBackButton(true);
+            } else {
+                setShowBackButton(false);
+            }
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check for header presence on load
-    return () => window.removeEventListener('scroll', handleScroll);
-}, []);
-  
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial check for header presence on load
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
     const products = [
         {
             name: "JK SWR Pipe",
@@ -462,6 +465,16 @@ const SWRProductScreen = () => {
                         </div>
                     </div>
                 ))}
+                <div className="fixed bottom-4 right-4">
+                <a 
+                    href="https://wa.me/919405799633" // Replace 'your-number' with your WhatsApp number
+                    className="bg-green-500 text-white text-lg font-semibold px-4 py-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 ease-in-out"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                >
+                    💬 Chat on WhatsApp
+                </a>
+            </div>
             </div>
             <RatingCarousel/>
         </div>
@@ -469,3 +482,4 @@ const SWRProductScreen = () => {
 };
 
 export default SWRProductScreen;
+
