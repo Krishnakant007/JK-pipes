@@ -321,20 +321,21 @@ const VideoComponent = () => {
 
   // Define the two sets of items
   const firstSet = [
-    "✔️ JK PVC Pipe",
-    "✔️ PVC Drainage Pipe",
-    "✔️ Rigid PVC Pipe",
-    "✔️ Irrigation PVC Pipe",
-    "✔️ 160mm PVC Pipe",
-    
+    "✔️ Residential plumbing and drainage.",
+    "✔️ Stormwater management systems.",
+    "✔️ Industrial plumbing and electrical conduits.",
+    "✔️ Agricultural irrigation.",
+    "✔️ Large-scale drainage projects.",
   ];
+  
   const secondSet = [
-    "✔️ 160mm HDPE Pipe",
-    "✔️ Agricultural HDPE Pipe",
-    "✔️ HDPE Water Pipe",
-    "✔️ JK HDPE Pipe",
-    "✔️ Black HDPE Pipe",
+    "✔️ Water supply and drainage systems.",
+    "✔️ Agricultural irrigation applications.",
+    "✔️ Potable water supply.",
+    "✔️ Sewage systems and industrial processes.",
+    "✔️ Underground gas distribution.",
   ];
+  
 
   useEffect(() => {
     // Function to animate text switch
