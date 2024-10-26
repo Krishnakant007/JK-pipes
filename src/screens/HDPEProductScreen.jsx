@@ -154,44 +154,45 @@
 
 
 
-import { gsap } from "gsap";
+import { gsap } from "gsap"; 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RatingCarousel from "../components/RatingCarousel";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const HDPEProductScreen = () => {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [showBackButton, setShowBackButton] = useState(false);
-  
-  
+
+    // Scroll to top when component mounts
     useEffect(() => {
-      const handleScroll = () => {
-          const header = document.getElementById('header'); // Assuming the header has an id="header"
-          const scrollY = window.scrollY;
-  
-          // Show the back button if header is not present or if the scroll position is past the header height
-          if (!header || scrollY > header.clientHeight) {
-              setShowBackButton(true);
-          } else {
-              setShowBackButton(false);
-          }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Initial check for header presence on load
-      return () => window.removeEventListener('scroll', handleScroll);
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const header = document.getElementById('header'); // Assuming the header has an id="header"
+            const scrollY = window.scrollY;
+
+            // Show the back button if header is not present or if the scroll position is past the header height
+            if (!header || scrollY > header.clientHeight) {
+                setShowBackButton(true);
+            } else {
+                setShowBackButton(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial check for header presence on load
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     
     const products = [
         {
             name: "160mm HDPE Pipe",
-            price: "₹ 35/ Meter",
             material: "HDPE",
             size: "160 mm",
             pressureRating: "PN 4",
@@ -203,7 +204,6 @@ const HDPEProductScreen = () => {
         },
         {
             name: "32mm HDPE Pipe",
-            price: "₹ 31/ Meter",
             material: "HDPE",
             size: "32 mm",
             pressureRating: "PN 4",
@@ -216,7 +216,6 @@ const HDPEProductScreen = () => {
         },
         {
             name: "85mm HDPE Pipe",
-            price: "₹ 32/ Meter",
             material: "HDPE",
             size: "85 mm",
             pressureRating: "PN 6",
@@ -229,7 +228,6 @@ const HDPEProductScreen = () => {
         },
         {
             name: "110mm HDPE Pipe",
-            price: "₹ 34/ Meter",
             material: "HDPE",
             size: "110 mm",
             pressureRating: "PN 6",
@@ -242,7 +240,6 @@ const HDPEProductScreen = () => {
         },
         {
             name: "140mm HDPE Pipe",
-            price: "₹ 33/ Meter",
             material: "HDPE",
             size: "140 mm",
             pressureRating: "PN 6",
@@ -261,18 +258,18 @@ const HDPEProductScreen = () => {
     useEffect(() => {
         // GSAP animation for scrolling
         const cards = gsap.utils.toArray(".product-card");
-        
+
         cards.forEach((card) => {
             gsap.fromTo(
                 card,
-                { y: 50, opacity: 0 }, // Start from bottom with opacity 0
+                { y: 50, opacity: 0 }, // Start from below with opacity 0
                 {
                     y: 0,
                     opacity: 1,
                     duration: 0.5,
                     scrollTrigger: {
                         trigger: card,
-                        start: "top 75%", // When the top of the card reaches 75% of the viewport height
+                        start: "top 100%", // When the top of the card reaches the bottom of the viewport
                         toggleActions: "play none none reverse", // Play on enter, reverse on leave
                         once: true // Animation occurs only once
                     }
@@ -283,12 +280,12 @@ const HDPEProductScreen = () => {
 
     return (
         <div className="py-12 px-8 bg-slate-200 min-h-screen">
-        <button 
-        onClick={() => navigate(-1)}
-        className="fixed top-4 left-4 bg-black text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out z-50"
-    >
-        ← Back
-    </button>
+            <button 
+                onClick={() => navigate(-1)}
+                className="fixed top-4 left-4 bg-black text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-600 transition duration-300 ease-in-out z-50"
+            >
+                ← Back
+            </button>
             <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">HDPE Pipes</h2>
             <p className="text-center mb-12 text-lg text-gray-600">Explore our range of HDPE pipes:</p>
 
@@ -303,7 +300,7 @@ const HDPEProductScreen = () => {
                             />
                         </div>
                         <h3 className="text-2xl font-semibold mb-2 text-gray-800">{product.name}</h3>
-                        <p className="text-xl font-bold text-blue-600 mb-4">{product.price}</p>
+                        <p className="text-xl font-bold text-blue-600 mb-4">Ask Price</p>
 
                         <div className="border-t pt-4 mt-4">
                             <table className="w-full text-left text-gray-700">
@@ -358,12 +355,19 @@ const HDPEProductScreen = () => {
                         <div className="pt-4 text-gray-700 text-lg">
                             <p><strong>Description:</strong> {product.description}</p>
                         </div>
+                        
+                        {/* Ask Price Button */}
+                        <a href="https://wa.me/919405799633" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300 ease-in-out">
+                            Ask Price
+                        </a>
+                        
                     </div>
                 ))}
             </div>
-            <RatingCarousel/>
+            <RatingCarousel />
         </div>
     );
 };
 
 export default HDPEProductScreen;
+
