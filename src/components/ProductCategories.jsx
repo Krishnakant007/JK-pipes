@@ -529,7 +529,7 @@ const ProductCategories = () => {
 
             <h2 className="text-3xl font-bold mb-6 pl-10">Our Products</h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6">
                 {/* SWR Category */}
                 <div
                     className="border p-6 sm:p-8 rounded-3xl shadow-xl bg-white hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"

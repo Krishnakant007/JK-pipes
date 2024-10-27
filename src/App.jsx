@@ -98,6 +98,9 @@ import HeaderText from "./components/HeaderText";
 import Footer from './components/Footer';
 import Carousel from './components/Carousel';
 import CompanyInfo from './components/CompanyInfo';
+import CompanyInfo2 from './components/CompanyInfo2';
+import CompanyInfo3 from './components/CompanyInfo3';
+
 import ProductCategories from './components/ProductCategories';
 import ContactForm from './components/ContactForm';
 import ReachUs from './components/ReachUs';
@@ -127,8 +130,11 @@ function App() {
   
              <HeaderText/>
             <CompanyInfo />
+            <CompanyInfo2 />
+            <CompanyInfo3 />
             <ProductCategories/>
             <RatingCarousel />
+            <ContactForm/>
           </>
         );
     }
