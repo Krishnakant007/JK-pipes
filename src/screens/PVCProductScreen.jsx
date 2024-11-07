@@ -1156,7 +1156,7 @@ const PVCProductScreen = () => {
             <div className="grid gap-8 max-w-4xl mx-auto">
                 {products.map((product, index) => (
                     <div key={index} className="product-card p-8 border rounded-xl shadow-lg bg-white hover:shadow-2xl transition duration-300 ease-in-out">
-                        <div className="w-full h-48 flex items-center justify-center mb-4 border-b pb-4">
+                        <div className="w-full h-80 flex items-center justify-center mb-4 border-b pb-4">
                             <img 
                                 src={product.imageUrl} 
                                 alt={product.name} 

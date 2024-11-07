@@ -1158,6 +1158,177 @@
 
 
 
+
+
+
+
+
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const CompanyInfo = () => {
+//     const sectionsRef = useRef([]);
+//     const [expanded, setExpanded] = useState({ infrastructure: false });
+//     const contentRefs = useRef({});
+//     const additionalSectionRef = useRef(null);
+//     const complementarySectionRef = useRef(null);
+
+//     useEffect(() => {
+//         sectionsRef.current.forEach((section) => {
+//             gsap.fromTo(
+//                 section,
+//                 { opacity: 0, y: 50 },
+//                 {
+//                     opacity: 1,
+//                     y: 0,
+//                     duration: 0.8,
+//                     ease: "power3.out",
+//                     scrollTrigger: {
+//                         trigger: section,
+//                         start: "top 90%",
+//                         toggleActions: "play none none reverse",
+//                     },
+//                 }
+//             );
+//         });
+
+//         // Animate Additional Section
+//         gsap.fromTo(
+//             additionalSectionRef.current,
+//             { x: -50, opacity: 0 },
+//             {
+//                 x: 0,
+//                 opacity: 1,
+//                 duration: 1,
+//                 ease: "power3.out",
+//                 scrollTrigger: {
+//                     trigger: additionalSectionRef.current,
+//                     start: "top 85%",
+//                     toggleActions: "play none none reverse",
+//                 },
+//             }
+//         );
+
+//         // Animate Complementary Section
+//         gsap.fromTo(
+//             complementarySectionRef.current,
+//             { x: 50, opacity: 0 },
+//             {
+//                 x: 0,
+//                 opacity: 1,
+//                 duration: 1,
+//                 ease: "power3.out",
+//                 scrollTrigger: {
+//                     trigger: complementarySectionRef.current,
+//                     start: "top 85%",
+//                     toggleActions: "play none none reverse",
+//                 },
+//             }
+//         );
+//     }, []);
+
+//     const toggleExpand = (section) => {
+//         setExpanded((prevState) => {
+//             const isExpanded = !prevState[section];
+
+//             if (contentRefs.current[section]) {
+//                 gsap.to(contentRefs.current[section], {
+//                     height: isExpanded ? "auto" : 0,
+//                     opacity: isExpanded ? 1 : 0,
+//                     duration: 0.5,
+//                     ease: "power3.inOut",
+//                 });
+//             }
+
+//             return { ...prevState, [section]: isExpanded };
+//         });
+//     };
+
+//     return (
+//         <section
+//             className="py-8 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 bg-cover bg-center"
+//             style={{
+//                 backgroundImage: `url('https://img.freepik.com/premium-photo/aerial-drone-view-group-large-modern-industrial-warehouse-factory-buildings-logistic-transportation-cargo-terminal_73110-11105.jpg')`,
+//             }}
+//         >
+//             {/* Our Infrastructure */}
+//             <div
+//                 className="bg-white/90 rounded-xl p-4 sm:p-6 md:p-10 mb-8 shadow-xl max-w-5xl mx-auto"
+//                 ref={(el) => (sectionsRef.current[0] = el)}
+//             >
+//                 <div className="mb-6 md:mb-10 flex justify-center">
+//                     <video autoPlay muted loop className="h-20 sm:h-24 md:h-32 lg:h-40 rounded-full w-48 sm:w-64 lg:w-80">
+//                         <source src="Infrastructure.mp4" type="video/mp4" />
+//                     </video>
+//                 </div>
+//                 <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-center">Our Infrastructure</h3>
+//                 <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-4 text-center">
+//                     We have a well-established infrastructure sprawling over an area of 24,500 Sq.Feet
+//                 </p>
+//                 <div
+//                     className="overflow-hidden"
+//                     style={{ height: 0, opacity: 0 }}
+//                     ref={(el) => (contentRefs.current.infrastructure = el)}
+//                 >
+//                     <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-4 text-center">
+//                         Our infrastructure is designed to maximize efficiency and production quality...
+//                     </p>
+//                 </div>
+//                 <button
+//                     onClick={() => toggleExpand("infrastructure")}
+//                     className="flex items-center justify-center gap-2 py-2 px-4 sm:px-6 md:px-8 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full hover:bg-blue-700 transition mx-auto"
+//                 >
+//                     {expanded.infrastructure ? "View Less" : "View More"}
+//                     <svg
+//                         className={`w-5 h-5 transition-transform duration-300 ${expanded.infrastructure ? "rotate-180" : ""}`}
+//                         xmlns="http://www.w3.org/2000/svg"
+//                         fill="none"
+//                         viewBox="0 0 24 24"
+//                         stroke="currentColor"
+//                     >
+//                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+//                     </svg>
+//                 </button>
+//             </div>
+
+//             {/* Additional Section with Images */}
+//             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6 md:gap-8 lg:gap-16 mt-6 sm:mt-8 md:mt-12 max-w-5xl mx-auto">
+//                 <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl" ref={additionalSectionRef}>
+//                     <img
+//                         src="/Pipes.jpg" // Replace with your image URL
+//                         alt="Additional Content"
+//                         className="rounded-md w-full h-48 sm:h-64 object-cover mb-4"
+//                     />
+//                     <h3 className="text-xl sm:text-2xl font-bold mb-2">Standard Quality</h3>
+//                     <p className="text-gray-700 text-base sm:text-lg">
+//                         Advanced machinery and high-quality raw materials ensure each pipe meets rigorous industry standards.
+//                     </p>
+//                 </div>
+//                 <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl" ref={complementarySectionRef}>
+//                     <img
+//                         src="/factory.png" // Replace with another image URL
+//                         alt="Complementary Image"
+//                         className="rounded-md w-full h-48 sm:h-64 object-cover mb-4"
+//                     />
+//                     <h3 className="text-xl sm:text-2xl font-bold mb-2">Quality Pipes Manufacturing</h3>
+//                     <p className="text-gray-700 text-base sm:text-lg">
+//                         Our commitment to superior standards in pipe manufacturing, using state-of-the-art technology.
+//                     </p>
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// };
+
+// export default CompanyInfo;
+
+
+
+
+
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -1166,12 +1337,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CompanyInfo = () => {
     const sectionsRef = useRef([]);
-    const [expanded, setExpanded] = useState({ infrastructure: false });
-    const contentRefs = useRef({});
     const additionalSectionRef = useRef(null);
     const complementarySectionRef = useRef(null);
 
     useEffect(() => {
+        // Scroll-triggered animations
         sectionsRef.current.forEach((section) => {
             gsap.fromTo(
                 section,
@@ -1179,21 +1349,21 @@ const CompanyInfo = () => {
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.8,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: section,
-                        start: "top 80%",
+                        start: "top 90%",
                         toggleActions: "play none none reverse",
                     },
                 }
             );
         });
 
-        // Animate Additional Section
+        // Additional Section Animation
         gsap.fromTo(
             additionalSectionRef.current,
-            { x: -100, opacity: 0 },
+            { x: -50, opacity: 0 },
             {
                 x: 0,
                 opacity: 1,
@@ -1201,16 +1371,16 @@ const CompanyInfo = () => {
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: additionalSectionRef.current,
-                    start: "top 80%",
+                    start: "top 85%",
                     toggleActions: "play none none reverse",
                 },
             }
         );
 
-        // Animate Complementary Section
+        // Complementary Section Animation
         gsap.fromTo(
             complementarySectionRef.current,
-            { x: 100, opacity: 0 },
+            { x: 50, opacity: 0 },
             {
                 x: 0,
                 opacity: 1,
@@ -1218,96 +1388,44 @@ const CompanyInfo = () => {
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: complementarySectionRef.current,
-                    start: "top 80%",
+                    start: "top 85%",
                     toggleActions: "play none none reverse",
                 },
             }
         );
     }, []);
 
-    const toggleExpand = (section) => {
-        setExpanded((prevState) => {
-            const isExpanded = !prevState[section];
-
-            if (contentRefs.current[section]) {
-                gsap.to(contentRefs.current[section], {
-                    height: isExpanded ? "auto" : 0,
-                    opacity: isExpanded ? 1 : 0,
-                    duration: 0.5,
-                    ease: "power3.inOut",
-                });
-            }
-
-            return { ...prevState, [section]: isExpanded };
-        });
-    };
-
     return (
         <section
-            className="py-12 px-8 md:px-16 lg:px-24 xl:px-32 bg-cover bg-center"
+            className="py-8 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 bg-cover bg-center"
             style={{
-                backgroundImage: `url('https://img.freepik.com/premium-photo/aerial-drone-view-group-large-modern-industrial-warehouse-factory-buildings-logistic-transportation-cargo-terminal_73110-11105.jpg')`,
+                backgroundImage: `url('/public/infra.jpeg')`,
             }}
+            
         >
-            {/* Our Infrastructure */}
-            <div className="bg-white/90 rounded-xl p-6 md:p-10 mb-8 shadow-xl max-w-5xl mx-auto" ref={(el) => (sectionsRef.current[0] = el)}>
-                <div className="mb-10 flex justify-center">
-                    <video autoPlay muted loop className="h-24 md:h-32 lg:h-40 rounded-full w-64 lg:w-80">
-                        <source src="Infrastructure.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-center">Our Infrastructure</h3>
-                <p className="text-lg md:text-xl text-gray-700 mb-4 text-center">
-                    We have a well-established infrastructure sprawling over an area of 24,500 Sq.Feet
-                </p>
-                <div
-                    className="overflow-hidden"
-                    style={{ height: 0, opacity: 0 }}
-                    ref={(el) => (contentRefs.current.infrastructure = el)}
-                >
-                    <p className="text-lg md:text-xl text-gray-700 mb-4 text-center">
-                        Our infrastructure is designed to maximize efficiency and production quality...
-                    </p>
-                </div>
-                <button
-                    onClick={() => toggleExpand("infrastructure")}
-                    className="flex items-center justify-center gap-2 py-2 px-6 md:px-8 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full hover:bg-blue-700 transition mx-auto"
-                >
-                    {expanded.infrastructure ? "View Less" : "View More"}
-                    <svg
-                        className={`w-5 h-5 transition-transform duration-300 ${expanded.infrastructure ? "rotate-180" : ""}`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-            </div>
-
-            {/* Additional Section with Images */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 lg:gap-16 mt-12 max-w-5xl mx-auto">
-                <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-6 md:p-8 shadow-xl" ref={additionalSectionRef}>
+            {/* Two Images with Text Below Half Screen */}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6 md:gap-8 lg:gap-16 mt-6 sm:mt-8 md:mt-12 max-w-5xl mx-auto">
+                <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl" ref={additionalSectionRef}>
                     <img
                         src="/Pipes.jpg" // Replace with your image URL
                         alt="Additional Content"
-                        className="rounded-md w-full h-64 object-cover mb-4"
+                        className="rounded-md w-full h-48 sm:h-64 object-cover mb-4"
                     />
-                    <h3 className="text-2xl font-bold mb-2">Standard Quality</h3>
-                    <p className="text-gray-700 text-lg">
-                    advanced machinery and high-quality raw materials, we ensure each pipe meets rigorous industry standards for durability, safety, and efficiency
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">Standard Quality</h3>
+                    <p className="text-gray-700 text-base sm:text-lg">
+                        Advanced machinery and high-quality raw materials ensure each pipe meets rigorous industry standards.
                     </p>
                 </div>
-                <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-6 md:p-8 shadow-xl" ref={complementarySectionRef}>
+                <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl" ref={complementarySectionRef}>
                     <img
                         src="/factory.png" // Replace with another image URL
                         alt="Complementary Image"
-                        className="rounded-md w-full h-64 object-cover mb-4"
+                        className="rounded-md w-full h-48 sm:h-64 object-cover mb-4"
                     />
-                    <h3 className="text-2xl font-bold mb-2">Quality Pipes Manufacturing</h3>
-                    <p className="text-gray-700 text-lg">
-                        our commitment to superior quality standards in pipe manufacturing. Through state-of-the-art technology and meticulous quality control processes  </p>
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">Quality Pipes Manufacturing</h3>
+                    <p className="text-gray-700 text-base sm:text-lg">
+                        Our commitment to superior standards in pipe manufacturing, using state-of-the-art technology.
+                    </p>
                 </div>
             </div>
         </section>

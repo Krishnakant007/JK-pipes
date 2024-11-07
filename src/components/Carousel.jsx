@@ -310,106 +310,563 @@
 // export default VideoComponent;
 
 
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const VideoComponent = () => {
+//   const videoRef = useRef(null); // Reference to the video element
+//   const textRef = useRef(null); // Reference to the text element
+//   const videoSrc = "1025.mp4"; // Single video file
+//   const [showFirstSet, setShowFirstSet] = useState(true);
+
+//   // Define the two sets of items
+//   const firstSet = [
+//     "✔️ Residential plumbing and drainage.",
+//     "✔️ Stormwater management systems.",
+//     "✔️ Industrial plumbing and electrical conduits.",
+//     "✔️ Agricultural irrigation.",
+//     "✔️ Large-scale drainage projects.",
+//   ];
+  
+//   const secondSet = [
+//     "✔️ Water supply and drainage systems.",
+//     "✔️ Agricultural irrigation applications.",
+//     "✔️ Potable water supply.",
+//     "✔️ Sewage systems and industrial processes.",
+//     "✔️ Underground gas distribution.",
+//   ];
+  
+
+//   useEffect(() => {
+//     // Function to animate text switch
+//     const switchTextSet = () => {
+//       gsap.to(textRef.current, { opacity: 0, duration: 1, ease: "power1.inOut" });
+//       setTimeout(() => {
+//         setShowFirstSet((prev) => !prev); // Toggle between text sets
+//         gsap.fromTo(
+//           textRef.current,
+//           { opacity: 0, x: -50 },
+//           { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//         );
+//       }, 1000); // Wait for fade-out to complete
+//     };
+
+//     // Initial animation for the first set
+//     gsap.fromTo(
+//       textRef.current,
+//       { opacity: 0, x: -50 },
+//       { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//     );
+
+//     // Set interval for looping between the two text sets
+//     const interval = setInterval(() => {
+//       switchTextSet();
+//     }, showFirstSet ? 5000 : 10000); // First set for 5 sec, second set for 10 sec
+
+//     // Intersection Observer to play/pause video
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           videoRef.current.play(); // Play video when in view
+//         } else {
+//           videoRef.current.pause(); // Pause video when out of view
+//         }
+//       },
+//       { threshold: 0 } // Trigger when any part of the video is out of view
+//     );
+
+//     if (videoRef.current) {
+//       observer.observe(videoRef.current);
+//     }
+
+//     return () => {
+//       clearInterval(interval); // Clear interval on component unmount
+//       if (videoRef.current) observer.unobserve(videoRef.current);
+//     };
+//   }, [showFirstSet]);
+
+//   return (
+//     <div className="relative flex justify-center items-center p-0 m-0 w-full h-auto overflow-hidden ">
+//       <video
+//         ref={videoRef}
+//         src={videoSrc}
+//         className="w-full h-full object-cover"
+//         autoPlay
+//         muted
+//         loop
+//         playsInline
+//         style={{ opacity: 1 }}
+//       />
+//       <div
+//         ref={textRef}
+//         className="absolute left-0 top-1/4 max-w-full w-4/5 px-2 text-white text-lg md:text-2xl font-semibold space-y-2"
+//         style={{ pointerEvents: "none", overflow: "hidden" }}
+//       >
+//         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
+//           <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+//             {item}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default VideoComponent;
+
+
+
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const VideoComponent = () => {
+//   const videoRef = useRef(null); // Reference to the video element
+//   const textRef = useRef(null); // Reference to the text element
+//   const videoSrc = "1025.mp4"; // Single video file
+//   const [showFirstSet, setShowFirstSet] = useState(true);
+
+//   // Define the two sets of items
+//   const firstSet = [
+//     "✔️ Residential plumbing and drainage.",
+//     "✔️ Stormwater management systems.",
+//     "✔️ Industrial plumbing and electrical conduits.",
+//     "✔️ Agricultural irrigation.",
+//     "✔️ Large-scale drainage projects.",
+//   ];
+  
+//   const secondSet = [
+//     "✔️ Water supply and drainage systems.",
+//     "✔️ Agricultural irrigation applications.",
+//     "✔️ Potable water supply.",
+//     "✔️ Sewage systems and industrial processes.",
+//     "✔️ Underground gas distribution.",
+//   ];
+  
+//   useEffect(() => {
+//     const switchTextSet = () => {
+//       gsap.to(textRef.current, { opacity: 0, duration: 1, ease: "power1.inOut" });
+//       setTimeout(() => {
+//         setShowFirstSet((prev) => !prev);
+//         gsap.fromTo(
+//           textRef.current,
+//           { opacity: 0, x: -50 },
+//           { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//         );
+//       }, 1000);
+//     };
+
+//     gsap.fromTo(
+//       textRef.current,
+//       { opacity: 0, x: -50 },
+//       { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//     );
+
+//     const interval = setInterval(() => {
+//       switchTextSet();
+//     }, showFirstSet ? 5000 : 10000);
+
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           videoRef.current.play();
+//         } else {
+//           videoRef.current.pause();
+//         }
+//       },
+//       { threshold: 0 }
+//     );
+
+//     if (videoRef.current) {
+//       observer.observe(videoRef.current);
+//     }
+
+//     return () => {
+//       clearInterval(interval);
+//       if (videoRef.current) observer.unobserve(videoRef.current);
+//     };
+//   }, [showFirstSet]);
+
+//   return (
+//     <div className="relative flex justify-center items-center p-0 m-0 w-full h-[50vh] md:h-auto overflow-hidden">
+//       <video
+//         ref={videoRef}
+//         src={videoSrc}
+//         className="w-full h-full object-cover"
+//         autoPlay
+//         muted
+//         loop
+//         playsInline
+//       />
+//       <div
+//         ref={textRef}
+//         className="absolute left-0 top-1/4 max-w-full w-4/5 px-2 text-white text-sm sm:text-base md:text-lg font-semibold space-y-1 sm:space-y-2 md:space-y-3"
+//         style={{ pointerEvents: "none", overflow: "hidden" }}
+//       >
+//         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
+//           <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+//             {item}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default VideoComponent;
+
+
+
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const ImageSliderComponent = () => {
+//   const textRef = useRef(null);
+//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+//   const [showFirstSet, setShowFirstSet] = useState(true);
+
+//   // Images for the slider
+//   const images = [
+//     "/img1.jpg",
+//     "/img2.jpg",
+//     "/img3.jpg",
+//     // "/image4.jpg",
+//     // "/image5.jpg"
+//   ];
+
+//   // Define the two sets of items
+//   const firstSet = [
+//     "✔️ Residential plumbing and drainage.",
+//     "✔️ Stormwater management systems.",
+//     "✔️ Industrial plumbing and electrical conduits.",
+//     "✔️ Agricultural irrigation.",
+//     "✔️ Large-scale drainage projects.",
+//   ];
+  
+//   const secondSet = [
+//     "✔️ Water supply and drainage systems.",
+//     "✔️ Agricultural irrigation applications.",
+//     "✔️ Potable water supply.",
+//     "✔️ Sewage systems and industrial processes.",
+//     "✔️ Underground gas distribution.",
+//   ];
+  
+//   useEffect(() => {
+//     const switchTextSet = () => {
+//       gsap.to(textRef.current, { opacity: 0, duration: 1, ease: "power1.inOut" });
+//       setTimeout(() => {
+//         setShowFirstSet((prev) => !prev);
+//         gsap.fromTo(
+//           textRef.current,
+//           { opacity: 0, x: -50 },
+//           { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//         );
+//       }, 1000);
+//     };
+
+//     gsap.fromTo(
+//       textRef.current,
+//       { opacity: 0, x: -50 },
+//       { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//     );
+
+//     const interval = setInterval(() => {
+//       switchTextSet();
+//     }, showFirstSet ? 5000 : 10000);
+
+//     // Cycle images every 5 seconds
+//     const imageInterval = setInterval(() => {
+//       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+//     }, 5000);
+
+//     return () => {
+//       clearInterval(interval);
+//       clearInterval(imageInterval);
+//     };
+//   }, [showFirstSet, images.length]);
+
+//   return (
+//     <div className="relative flex justify-center items-center p-0 m-0 w-full h-[50vh] md:h-auto overflow-hidden">
+//       {/* Image Slider */}
+//       <div className="w-full h-full">
+//         <img
+//           src={images[currentImageIndex]}
+//           alt={`Slide ${currentImageIndex + 1}`}
+//           className="w-full h-full object-cover"
+//         />
+//       </div>
+
+//       {/* Text Overlay */}
+//       <div
+//         ref={textRef}
+//         className="absolute left-0 top-1/4 max-w-full w-4/5 px-2 text-white text-sm sm:text-base md:text-lg font-semibold space-y-1 sm:space-y-2 md:space-y-3"
+//         style={{ pointerEvents: "none", overflow: "hidden" }}
+//       >
+//         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
+//           <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+//             {item}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ImageSliderComponent;
+
+
+
+
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const ImageSliderComponent = () => {
+//   const textRef = useRef(null);
+//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+//   const [showFirstSet, setShowFirstSet] = useState(true);
+
+//   // Images for the slider
+//   const images = [
+//     "/img1.jpg",
+//     "/img2.jpg",
+//     "/img3.jpg",
+//     "/image4.jpg",
+//     "/image5.jpg"
+//   ];
+
+//   // Define the two sets of items
+//   const firstSet = [
+//     "✔️ Residential plumbing and drainage.",
+//     "✔️ Stormwater management systems.",
+//     "✔️ Industrial plumbing and electrical conduits.",
+//     "✔️ Agricultural irrigation.",
+//     "✔️ Large-scale drainage projects.",
+//   ];
+  
+//   const secondSet = [
+//     "✔️ Water supply and drainage systems.",
+//     "✔️ Agricultural irrigation applications.",
+//     "✔️ Potable water supply.",
+//     "✔️ Sewage systems and industrial processes.",
+//     "✔️ Underground gas distribution.",
+//   ];
+  
+//   useEffect(() => {
+//     const switchTextSet = () => {
+//       gsap.to(textRef.current, { opacity: 0, duration: 1, ease: "power1.inOut" });
+//       setTimeout(() => {
+//         setShowFirstSet((prev) => !prev);
+//         gsap.fromTo(
+//           textRef.current,
+//           { opacity: 0, x: -50 },
+//           { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//         );
+//       }, 1000);
+//     };
+
+//     gsap.fromTo(
+//       textRef.current,
+//       { opacity: 0, x: -50 },
+//       { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//     );
+
+//     const interval = setInterval(() => {
+//       switchTextSet();
+//     }, showFirstSet ? 5000 : 10000);
+
+//     // Cycle images every 5 seconds
+//     const imageInterval = setInterval(() => {
+//       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+//     }, 5000);
+
+//     return () => {
+//       clearInterval(interval);
+//       clearInterval(imageInterval);
+//     };
+//   }, [showFirstSet, images.length]);
+
+//   return (
+//     <div className="relative flex justify-center items-center p-0 m-0 w-full h-screen md:h-auto max-h-screen overflow-hidden">
+//       {/* Image Slider */}
+//       <div className="w-full h-full max-h-screen">
+//         <img
+//           src={images[currentImageIndex]}
+//           alt={`Slide ${currentImageIndex + 1}`}
+//           className="w-full h-full object-cover max-h-screen"
+//         />
+//       </div>
+
+//       {/* Text Overlay */}
+//       <div
+//         ref={textRef}
+//         className="absolute left-0 top-1/4 max-w-full w-4/5 px-2 text-white text-sm sm:text-base md:text-lg font-semibold space-y-1 sm:space-y-2 md:space-y-3"
+//         style={{ pointerEvents: "none", overflow: "hidden" }}
+//       >
+//         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
+//           <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+//             {item}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ImageSliderComponent;
+
+
+
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const ImageSliderComponent = () => {
+//   const textRef = useRef(null);
+//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+//   const [showFirstSet, setShowFirstSet] = useState(true);
+
+//   // Images for the slider
+//   const images = [
+//     "/img1.jpg",
+//     "/img2.jpg",
+//     "/img3.jpg",
+//     "/img4.jpg",
+//     "/image5.jpg",
+//     "/img5.jpg"
+//   ];
+
+//   // Define the two sets of items
+//   const firstSet = [
+//     "✔️ Residential plumbing and drainage.",
+//     "✔️ Stormwater management systems.",
+//     "✔️ Industrial plumbing and electrical conduits.",
+//     "✔️ Agricultural irrigation.",
+//     "✔️ Large-scale drainage projects.",
+//   ];
+  
+//   const secondSet = [
+//     "✔️ Water supply and drainage systems.",
+//     "✔️ Agricultural irrigation applications.",
+//     "✔️ Potable water supply.",
+//     "✔️ Sewage systems and industrial processes.",
+//     "✔️ Underground gas distribution.",
+//   ];
+  
+//   useEffect(() => {
+//     const switchTextSet = () => {
+//       gsap.to(textRef.current, { opacity: 0, duration: 1, ease: "power1.inOut" });
+//       setTimeout(() => {
+//         setShowFirstSet((prev) => !prev);
+//         gsap.fromTo(
+//           textRef.current,
+//           { opacity: 0, x: -50 },
+//           { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//         );
+//       }, 1000);
+//     };
+
+//     gsap.fromTo(
+//       textRef.current,
+//       { opacity: 0, x: -50 },
+//       { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
+//     );
+
+//     const interval = setInterval(() => {
+//       switchTextSet();
+//     }, showFirstSet ? 5000 : 10000);
+
+//     // Cycle images every 5 seconds
+//     const imageInterval = setInterval(() => {
+//       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+//     }, 5000);
+
+//     return () => {
+//       clearInterval(interval);
+//       clearInterval(imageInterval);
+//     };
+//   }, [showFirstSet, images.length]);
+
+//   return (
+//     <div className="relative flex justify-center items-center p-0 m-0 w-full h-screen md:h-auto max-h-screen overflow-hidden">
+//       {/* Image Slider with Transparent Black Overlay */}
+//       <div className="w-full h-full max-h-screen relative">
+//         <img
+//           src={images[currentImageIndex]}
+//           alt={`Slide ${currentImageIndex + 1}`}
+//           className="w-full h-full object-cover max-h-screen"
+//         />
+//         {/* Transparent Black Overlay */}
+//         <div className="absolute inset-0 bg-black opacity-50"></div>
+//       </div>
+
+//       {/* Text Overlay */}
+//       <div
+//         ref={textRef}
+//         className="absolute left-0 top-1/4 max-w-full w-4/5 px-2 text-white text-sm sm:text-base md:text-lg font-semibold space-y-1 sm:space-y-2 md:space-y-3"
+//         style={{ pointerEvents: "none", overflow: "hidden" }}
+//       >
+//         {(showFirstSet ? firstSet : secondSet).map((item, index) => (
+//           <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+//             {item}
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ImageSliderComponent;
+
+
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-const VideoComponent = () => {
-  const videoRef = useRef(null); // Reference to the video element
-  const textRef = useRef(null); // Reference to the text element
-  const videoSrc = "1025.mp4"; // Single video file
-  const [showFirstSet, setShowFirstSet] = useState(true);
+const ImageSliderComponent = () => {
+  const imageRef = useRef(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Define the two sets of items
-  const firstSet = [
-    "✔️ Residential plumbing and drainage.",
-    "✔️ Stormwater management systems.",
-    "✔️ Industrial plumbing and electrical conduits.",
-    "✔️ Agricultural irrigation.",
-    "✔️ Large-scale drainage projects.",
+  // Images for the slider
+  const images = [
+    "/img2.jpg",
+    "/img3.jpg",
+    "/img1.jpg",
+    "/img4.jpg",
+    "/img5.jpg",
   ];
-  
-  const secondSet = [
-    "✔️ Water supply and drainage systems.",
-    "✔️ Agricultural irrigation applications.",
-    "✔️ Potable water supply.",
-    "✔️ Sewage systems and industrial processes.",
-    "✔️ Underground gas distribution.",
-  ];
-  
 
   useEffect(() => {
-    // Function to animate text switch
-    const switchTextSet = () => {
-      gsap.to(textRef.current, { opacity: 0, duration: 1, ease: "power1.inOut" });
-      setTimeout(() => {
-        setShowFirstSet((prev) => !prev); // Toggle between text sets
-        gsap.fromTo(
-          textRef.current,
-          { opacity: 0, x: -50 },
-          { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
-        );
-      }, 1000); // Wait for fade-out to complete
+    const animateImage = () => {
+      // Animate the image with a smooth zoom-out effect
+      gsap.fromTo(
+        imageRef.current,
+        { scale: 1.1 }, // Start slightly zoomed in
+        { scale: 1, duration: 4, ease: "power2.out" } // Smooth zoom-out
+      );
     };
 
-    // Initial animation for the first set
-    gsap.fromTo(
-      textRef.current,
-      { opacity: 0, x: -50 },
-      { opacity: 1, x: 0, duration: 1, ease: "power1.out" }
-    );
+    // Initial animation on component load
+    animateImage();
 
-    // Set interval for looping between the two text sets
+    // Set interval for cycling through images with smooth zoom-out effect
     const interval = setInterval(() => {
-      switchTextSet();
-    }, showFirstSet ? 5000 : 10000); // First set for 5 sec, second set for 10 sec
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      animateImage(); // Trigger zoom-out animation on each image change
+    }, 5000); // Change every 5 seconds
 
-    // Intersection Observer to play/pause video
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          videoRef.current.play(); // Play video when in view
-        } else {
-          videoRef.current.pause(); // Pause video when out of view
-        }
-      },
-      { threshold: 0 } // Trigger when any part of the video is out of view
-    );
-
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    return () => {
-      clearInterval(interval); // Clear interval on component unmount
-      if (videoRef.current) observer.unobserve(videoRef.current);
-    };
-  }, [showFirstSet]);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
-    <div className="relative flex justify-center items-center p-0 m-0 w-full h-auto overflow-hidden ">
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        className="w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{ opacity: 1 }}
-      />
-      <div
-        ref={textRef}
-        className="absolute left-0 top-1/4 max-w-full w-4/5 px-2 text-white text-lg md:text-2xl font-semibold space-y-2"
-        style={{ pointerEvents: "none", overflow: "hidden" }}
-      >
-        {(showFirstSet ? firstSet : secondSet).map((item, index) => (
-          <div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
-            {item}
-          </div>
-        ))}
+    <div className="relative flex justify-center items-center w-full h-screen overflow-hidden">
+      {/* Image Slider with Smooth Zoom-Out Effect */}
+      <div className="w-full h-full relative">
+        <img
+          ref={imageRef}
+          src={images[currentImageIndex]}
+          alt={`Slide ${currentImageIndex + 1}`}
+          className="w-full h-full object-cover"
+        />
       </div>
     </div>
   );
 };
 
-export default VideoComponent;
+export default ImageSliderComponent;

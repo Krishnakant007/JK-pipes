@@ -305,7 +305,23 @@ const UPVCProductScreen = () => {
           country: "Made in India",
           imageUrl: "/images/jk_upvc_pipe.webp",
           description: "Durable and high-quality UPVC pipe designed for various plumbing applications.",
-      },
+    },
+    
+    {
+      name: "JK UPVC Pipe",
+      brand: "JK",
+      material: "UPVC",
+      size: "3 Inch",
+      length: "3 and 6 meter",
+      thickness: "3 mm",
+      
+      PipeClass :"Schedule 40",	
+
+      color: "White",
+      country: "Made in India",
+      imageUrl: "/images/up2.webp",
+      description: "Potable water supply system used in complexes  Bathroom Fitting Wash Basins & Laboratories Water Distribution in rural Areas Industrail Application",
+  },
       // Add more products as needed...
   ];
 
@@ -324,7 +340,7 @@ const UPVCProductScreen = () => {
       <div className="grid gap-8 max-w-4xl mx-auto">
         {products.map((product, index) => (
           <div key={index} className="p-8 border rounded-xl shadow-lg bg-white hover:shadow-2xl transition duration-300 ease-in-out">
-            <div className="w-full h-64 flex items-center justify-center mb-4 border-b pb-4">
+            <div className="w-full h-80 flex items-center justify-center mb-4 border-b pb-4">
               <img 
                 src={product.imageUrl} 
                 alt={product.name} 

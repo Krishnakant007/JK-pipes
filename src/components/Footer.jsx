@@ -86,11 +86,12 @@ const Footer = () => {
 
         {/* Section 4 */}
         <div ref={(el) => (sectionsRef.current[3] = el)} className="space-y-3">
-          <h2 className="font-bold text-2xl">Get in Touch</h2>
-          <p>Phone: +919405799633</p>
-          <p>Email: [Add Contact Email]</p>
-        </div>
-
+        <h2 className="font-bold text-2xl">Get in Touch</h2>
+        <p>📞 Phone: +91 9405799633</p>
+        <p>📞 Phone: +91 9673750215</p>
+        <p>✉️ Email: jktechnoplast@yahoo.com</p>
+        
+     </div>
         {/* Section 5 */}
         <div ref={(el) => (sectionsRef.current[4] = el)} className="space-y-3">
           <h2 className="font-bold text-2xl">More Information</h2>

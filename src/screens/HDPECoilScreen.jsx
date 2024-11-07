@@ -845,7 +845,7 @@ const HDPECoilScreen = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-full h-48 flex items-center justify-center mb-4 border-b pb-4">
+            <div className="w-full h-80 flex items-center justify-center mb-4 border-b pb-4">
               <img 
                 src={product.imageUrl} 
                 alt={product.name} 

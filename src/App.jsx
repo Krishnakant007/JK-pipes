@@ -94,6 +94,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Header from "./components/Header";
 import HeaderText from "./components/HeaderText";
+import QuickProductShow from "./components/QuickProductShow";
 
 import Footer from './components/Footer';
 import Carousel from './components/Carousel';
@@ -111,6 +112,9 @@ import PVCProductScreen from './screens/PVCProductScreen';
 import HDPECoilScreen from './screens/HDPECoilScreen';
 import UPVCProductScreen from './screens/UPVCProductScreen';
 import DetailScreen from './details/DetailScreen';
+import Whatsapp from './components/Whatsapp';
+import IconsWithNames from './components/IconsWithNames';
+import ProductCarousel from './components/ProductCarousel';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -127,13 +131,19 @@ function App() {
         return (
           <>
             <Carousel />
-  
+             <Whatsapp/>
              <HeaderText/>
             <CompanyInfo />
+
             <CompanyInfo2 />
+            <IconsWithNames/>
             <CompanyInfo3 />
+            <ProductCarousel />
+            
+            
             <ProductCategories/>
             <RatingCarousel />
+            
             <ContactForm/>
           </>
         );
@@ -158,3 +168,6 @@ function App() {
 }
 
 export default App;
+
+
+// <QuickProductShow/>

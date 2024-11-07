@@ -602,7 +602,7 @@ const SWRProductScreen = () => {
                         ref={(el) => (cardRefs.current[index] = el)}
                         className="p-8 border rounded-xl shadow-lg bg-white hover:shadow-2xl transition duration-300 ease-in-out"
                     >
-                        <div className="w-full h-64 flex items-center justify-center mb-4 border-b pb-4">
+                        <div className="w-full h-80 flex items-center justify-center mb-4 border-b pb-4">
                             <img
                                 ref={(el) => (imageRefs.current[index] = el)}
                                 src={product.imageUrl}
