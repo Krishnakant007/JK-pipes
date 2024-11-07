@@ -623,10 +623,6 @@
 
 
 
-
-
-
-
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -635,16 +631,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CompanyInfo = () => {
     const sectionsRef = useRef([]);
-    const [expanded, setExpanded] = useState({
-        usage: false,
-        infrastructure: false,
-        mission: false,
-        vision: false,
-    });
-    const contentRefs = useRef({});
+    const additionalSectionRef = useRef(null);
+    const complementarySectionRef = useRef(null);
 
     useEffect(() => {
-        // GSAP animations for each section on scroll
+        // Scroll-triggered animations
         sectionsRef.current.forEach((section) => {
             gsap.fromTo(
                 section,
@@ -652,167 +643,92 @@ const CompanyInfo = () => {
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.8,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: section,
-                        start: "top 80%",
+                        start: "top 90%",
                         toggleActions: "play none none reverse",
                     },
                 }
             );
         });
+
+        // Additional Section Animation
+        gsap.fromTo(
+            additionalSectionRef.current,
+            { x: -50, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: additionalSectionRef.current,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse",
+                },
+            }
+        );
+
+        // Complementary Section Animation
+        gsap.fromTo(
+            complementarySectionRef.current,
+            { x: 50, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: complementarySectionRef.current,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse",
+                },
+            }
+        );
     }, []);
 
-    const toggleExpand = (section) => {
-        setExpanded((prevState) => {
-            const isExpanded = !prevState[section];
-
-            if (contentRefs.current[section]) {
-                gsap.to(contentRefs.current[section], {
-                    height: isExpanded ? "auto" : 0,
-                    opacity: isExpanded ? 1 : 0,
-                    duration: 0.5,
-                    ease: "power3.inOut",
-                });
-            }
-
-            return { ...prevState, [section]: isExpanded };
-        });
-    };
-
     return (
-        <section className="py-12 px-8">
-            {/* Product Usage Section */}
-            <div className="text-center mb-10" ref={(el) => (sectionsRef.current[0] = el)}>
-                <div className="flex justify-center items-center gap-6 flex-wrap">
-                    {/* Add your product usage logos here */}
-                </div>
-            </div>
-
-            {/* Our Infrastructure */}
-            <div className="bg-gray-200 rounded-xl p-6 mb-8 shadow-xl" ref={(el) => (sectionsRef.current[1] = el)}>
-                <div className="mb-10 flex justify-center">
-                    <video autoPlay muted loop className="h-24 rounded-full w-64">
-                        <source src="Infrastructure.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <h3 className="text-3xl font-bold mb-4">Our Infrastructure</h3>
-                <p className="text-lg text-gray-700 mb-4">
-                    We have a well-established infrastructure sprawling over an area of 24,500 Sq.Feet. We own a state-of-the-art
-                    infrastructure that is equipped with the latest machinery and technology in our organization.
-                </p>
-                <div
-                    className="overflow-hidden"
-                    style={{ height: 0, opacity: 0 }}
-                    ref={(el) => (contentRefs.current.infrastructure = el)}
-                >
-                    <p className="text-lg text-gray-700 mb-4">
-                        Our infrastructure is designed to maximize efficiency and production quality. It includes various specialized areas such as production, quality testing, and warehousing, ensuring seamless operations and high-quality output.
+        <section
+            className="py-8 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 bg-cover bg-center"
+            style={{
+                backgroundImage: `url('/infra.jpeg')`,
+            }}
+            
+        >
+            {/* Two Images with Text Below Half Screen */}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6 md:gap-8 lg:gap-16 mt-6 sm:mt-8 md:mt-12 max-w-5xl mx-auto">
+                <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl" ref={additionalSectionRef}>
+                    <img
+                        src="/Pipes.jpg" // Replace with your image URL
+                        alt="Additional Content"
+                        className="rounded-md w-full h-48 sm:h-64 object-cover mb-4"
+                    />
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">Standard Quality</h3>
+                    <p className="text-gray-700 text-base sm:text-lg">
+                        Advanced machinery and high-quality raw materials ensure each pipe meets rigorous industry standards.
                     </p>
                 </div>
-                <button
-                    onClick={() => toggleExpand("infrastructure")}
-                    className="flex items-center justify-center gap-2 py-2 px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full hover:bg-blue-700 transition"
-                >
-                    {expanded.infrastructure ? "View Less" : "View More"}
-                    <svg
-                        className={`w-5 h-5 transition-transform duration-300 ${
-                            expanded.infrastructure ? "rotate-180" : ""
-                        }`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-            </div>
-
-            {/* Similar setup for other sections */}
-            {/* Our Mission */}
-            <div className="bg-gray-200 rounded-xl p-6 mb-8 shadow-xl" ref={(el) => (sectionsRef.current[2] = el)}>
-                <div className="mb-10 flex justify-center">
-                    <video autoPlay muted loop className="h-24 rounded-full w-64">
-                        <source src="mission.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <h3 className="text-3xl font-bold mb-4">Our Mission</h3>
-                <p className="text-lg text-gray-700 mb-4">
-                    To build a successful business that would stand the rigors of time focused on manufacturing the highest quality
-                    and supplying the most cost-effective products with the best service to the customers.
-                </p>
-                <div
-                    className="overflow-hidden"
-                    style={{ height: 0, opacity: 0 }}
-                    ref={(el) => (contentRefs.current.mission = el)}
-                >
-                    <p className="text-lg text-gray-700 mb-4">
-                        We are committed to continuous improvement, innovation, and achieving the highest level of customer satisfaction through ethical and sustainable business practices.
+                <div className="w-full md:w-1/2 bg-white/90 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl" ref={complementarySectionRef}>
+                    <img
+                        src="/factory.png" // Replace with another image URL
+                        alt="Complementary Image"
+                        className="rounded-md w-full h-48 sm:h-64 object-cover mb-4"
+                    />
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">Quality Pipes Manufacturing</h3>
+                    <p className="text-gray-700 text-base sm:text-lg">
+                        Our commitment to superior standards in pipe manufacturing, using state-of-the-art technology.
                     </p>
                 </div>
-                <button
-                    onClick={() => toggleExpand("mission")}
-                    className="flex items-center justify-center gap-2 py-2 px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full hover:bg-blue-700 transition"
-                >
-                    {expanded.mission ? "View Less" : "View More"}
-                    <svg
-                        className={`w-5 h-5 transition-transform duration-300 ${
-                            expanded.mission ? "rotate-180" : ""
-                        }`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-            </div>
-
-            {/* Our Vision */}
-            <div className="bg-gray-200 rounded-xl p-6 shadow-xl" ref={(el) => (sectionsRef.current[3] = el)}>
-                <div className="mb-10 flex justify-center">
-                    <video autoPlay muted loop className="h-24 w-64">
-                        <source src="Vision.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <h3 className="text-3xl font-bold mb-4">Our Vision</h3>
-                <p className="text-lg text-gray-700 mb-4">
-                    Our vision is to be one of the most trusted manufacturers in Irrigation Equipment like HDPE Pipes and Coils,
-                    PVC Pipes, SWR Pipes, and UPVC Pipes.
-                </p>
-                <div
-                    className="overflow-hidden"
-                    style={{ height: 0, opacity: 0 }}
-                    ref={(el) => (contentRefs.current.vision = el)}
-                >
-                    <p className="text-lg text-gray-700 mb-4">
-                        We aim to lead the industry with innovative, eco-friendly products that empower farmers and industries to improve their irrigation practices efficiently and sustainably.
-                    </p>
-                </div>
-                <button
-                    onClick={() => toggleExpand("vision")}
-                    className="flex items-center justify-center gap-2 py-2 px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full hover:bg-blue-700 transition"
-                >
-                    {expanded.vision ? "View Less" : "View More"}
-                    <svg
-                        className={`w-5 h-5 transition-transform duration-300 ${
-                            expanded.vision ? "rotate-180" : ""
-                        }`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
             </div>
         </section>
     );
 };
 
 export default CompanyInfo;
+
+
+
+
 
