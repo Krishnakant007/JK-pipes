@@ -319,62 +319,431 @@
 
 
 
-import { Carousel } from 'react-responsive-carousel'; 
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { useEffect, useState } from 'react';
+// import { Carousel } from 'react-responsive-carousel';
+// import 'react-responsive-carousel/lib/styles/carousel.min.css';
+// import { useEffect, useState } from 'react';
+
+// const ProductCarousel = () => {
+//     const products = [
+//         { image: 'products1.jpg', title: 'HDPE Pipe 20mm', description: 'Ideal for residential and industrial water transport.' },
+//         { image: 'products3.jpg', title: 'Sprinkler System', description: 'Efficient water distribution for large gardens.' },
+//         { image: 'products7.jpg', title: 'HDPE Fittings', description: 'Durable fittings compatible with a range of HDPE pipes.' },
+//         { image: 'products13.jpg', title: 'HDPE Fittings', description: 'Durable fittings compatible with a range of HDPE pipes.' },
+//     ];
+
+//     const [isMounted, setIsMounted] = useState(false);
+
+//     useEffect(() => {
+//         setIsMounted(true); // Ensure component mounts only once
+//         console.log('Component mounted');
+//     }, []);
+
+//     if (!isMounted) return null;
+
+//     return (
+//         <div className="bg-gray-50 w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10 pb-20">
+//             <h2 className="text-center text-4xl font-bold text-blue-600 mb-6 md:mb-12">Our Products</h2>
+//             <Carousel
+//                 className="w-full max-w-5xl h-[80vh] md:h-[90vh] lg:h-[100vh]"
+//                 showThumbs={false}
+//                 infiniteLoop
+//                 useKeyboardArrows
+//                 autoPlay
+//                 interval={3500} // Smooth autoplay
+//                 transitionTime={700} // Smoother transition effect
+//                 swipeScrollTolerance={5}
+//                 showStatus={false} // Hides status to make it look cleaner
+//             >
+//                 {products.map((product, index) => (
+//                     <div key={index} className="flex flex-col items-center h-full p-6 md:p-8">
+//                         {/* Product Image */}
+//                         <div className="w-full h-3/4 flex items-center justify-center overflow-hidden rounded-lg shadow-lg">
+//                             <img
+//                                 src={product.image}
+//                                 alt={product.title}
+//                                 className="object-cover w-full h-full rounded-lg"
+//                                 onError={(e) => (e.target.src = 'placeholder.jpg')}
+//                             />
+//                         </div>
+//                         {/* Product Text */}
+//                         <div className="text-center mt-4 p-6 max-w-3xl bg-white bg-opacity-90 rounded-lg shadow-lg z-10">
+//                             <h3 className="text-2xl md:text-3xl font-semibold text-blue-600">{product.title}</h3>
+//                             <p className="text-base md:text-lg text-gray-700 leading-relaxed mt-2">
+//                                 {product.description}
+//                             </p>
+//                         </div>
+//                     </div>
+//                 ))}
+//             </Carousel>
+//         </div>
+//     );
+// };
+
+// export default ProductCarousel;
+
+
+
+
+// import { Carousel } from 'react-responsive-carousel';
+// import 'react-responsive-carousel/lib/styles/carousel.min.css';
+// import { useEffect, useState } from 'react';
+
+// const ProductCarousel = () => {
+//     const products = [
+//         { image: 'products8.jpg', title: 'HDPE Pipe 20mm' },
+//         { image: 'products3.jpg', title: 'Sprinkler System' },
+//         { image: 'products3.jpg', title: 'HDPE Fittings' },
+//         { image: 'products18.jpg' },
+//         { image: 'products12.jpg', title: 'HDPE Fittings' },
+//         { image: 'products10.jpg' },
+//         { image: 'products11.jpg' },
+//         { image: 'products17.jpg' },
+//     ];
+
+//     const [isMounted, setIsMounted] = useState(false);
+
+//     useEffect(() => {
+//         setIsMounted(true); // Ensure component mounts only once
+//         console.log('Component mounted');
+//     }, []);
+
+//     if (!isMounted) return null;
+
+//     return (
+//         <div className="bg-gray-50 w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10 pb-20">
+//             <h2 className="text-center text-4xl font-bold text-blue-600 mb-6 md:mb-12">Our Products</h2>
+//             <Carousel
+//                 className="w-full max-w-5xl h-[90vh] md:h-[100vh] lg:h-[110vh]"
+//                 showThumbs={false}
+//                 infiniteLoop
+//                 useKeyboardArrows
+//                 autoPlay
+//                 interval={1800} // Faster autoplay for continuous effect
+//                 transitionTime={0} // Instant transition for smooth continuous scrolling
+//                 swipeScrollTolerance={5}
+//                 showStatus={false} // Hides status to make it look cleaner
+//             >
+//                 {products.map((product, index) => (
+//                     <div key={index} className="flex items-center justify-center h-full p-6 md:p-8">
+//                         {/* Product Image Only */}
+//                         <div className="w-full h-full flex items-center justify-center overflow-hidden rounded-lg shadow-lg">
+//                             <img
+//                                 src={product.image}
+//                                 alt={product.title}
+//                                 className="object-cover w-full h-full rounded-lg"
+//                                 onError={(e) => (e.target.src = 'placeholder.jpg')}
+//                             />
+//                         </div>
+//                     </div>
+//                 ))}
+//             </Carousel>
+//         </div>
+//     );
+// };
+
+// export default ProductCarousel;
+
+
+// import { useEffect, useState, useRef } from 'react';
+// import gsap from 'gsap';
+
+// const ProductCarousel = () => {
+//     const products = [
+//         { image: 'products8.jpg', title: 'HDPE Pipe 20mm' },
+//         { image: 'products3.jpg', title: 'Sprinkler System' },
+//         { image: 'products3.jpg', title: 'HDPE Fittings' },
+//         { image: 'products18.jpg' },
+//         { image: 'products12.jpg', title: 'HDPE Fittings' },
+//         { image: 'products10.jpg' },
+//         { image: 'products11.jpg' },
+//         { image: 'products17.jpg' },
+//     ];
+
+//     const [currentImage, setCurrentImage] = useState(0);
+//     const imageRef = useRef(null);
+
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setCurrentImage((prev) => (prev + 1) % products.length);
+//         }, 3000); // Auto-transition every 3 seconds
+
+//         return () => clearInterval(interval);
+//     }, [products.length]);
+
+//     useEffect(() => {
+//         // GSAP animation for image transitions
+//         if (imageRef.current) {
+//             gsap.fromTo(
+//                 imageRef.current,
+//                 { opacity: 0, x: 50 },
+//                 { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }
+//             );
+//         }
+//     }, [currentImage]);
+
+//     const handleDotClick = (index) => {
+//         setCurrentImage(index);
+//     };
+
+//     return (
+//         <div className="bg-gray-50 w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10 pb-20">
+//             <h2 className="text-center text-4xl font-bold text-blue-600 mb-6 md:mb-12">Our Products</h2>
+//             <div className="w-full max-w-7xl h-[100vh] flex items-center justify-center relative">
+//                 {/* Image Display */}
+//                 <div className="w-full h-full overflow-hidden rounded-lg shadow-lg flex items-center justify-center">
+//                     <img
+//                         ref={imageRef}
+//                         src={products[currentImage].image}
+//                         alt={products[currentImage].title || 'Product Image'}
+//                         className="object-cover w-full h-full rounded-lg"
+//                         onError={(e) => (e.target.src = 'placeholder.jpg')}
+//                     />
+//                 </div>
+
+//                 {/* Dots for Navigation */}
+//                 <div className="absolute bottom-5 flex space-x-2">
+//                     {products.map((_, index) => (
+//                         <button
+//                             key={index}
+//                             onClick={() => handleDotClick(index)}
+//                             className={`w-3 h-3 rounded-full transition-colors ${
+//                                 currentImage === index ? 'bg-blue-600' : 'bg-gray-300'
+//                             }`}
+//                         ></button>
+//                     ))}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default ProductCarousel;
+
+
+
+// import { useEffect, useState, useRef } from 'react';
+// import gsap from 'gsap';
+
+// const ProductCarousel = () => {
+//     const products = [
+//         { image: 'products8.jpg', title: 'HDPE Pipe 20mm' },
+//         { image: 'products3.jpg', title: 'Sprinkler System' },
+//         { image: 'product4.jpg', title: 'HDPE Fittings' },
+//         { image: 'products18.jpg' },
+//         { image: 'products12.jpg', title: 'HDPE Fittings' },
+//         { image: 'products10.jpg' },
+//         { image: 'products11.jpg' },
+//         { image: 'products17.jpg' },
+//     ];
+
+//     const [currentImage, setCurrentImage] = useState(0);
+//     const imageRef = useRef(null);
+
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setCurrentImage((prev) => (prev + 1) % products.length);
+//         }, 3000); // Auto-transition every 3 seconds
+
+//         return () => clearInterval(interval);
+//     }, [products.length]);
+
+//     useEffect(() => {
+//         // GSAP animation for image transitions
+//         if (imageRef.current) {
+//             gsap.fromTo(
+//                 imageRef.current,
+//                 { opacity: 0, x: 50 },
+//                 { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }
+//             );
+//         }
+//     }, [currentImage]);
+
+//     const handleDotClick = (index) => {
+//         setCurrentImage(index);
+//     };
+
+//     return (
+//         <div className="bg-gray-50 w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10 pb-20">
+//             <h2 className="text-center text-4xl font-bold text-blue-600 mb-6 md:mb-12">Our Products</h2>
+//             <div className="w-full max-w-7xl h-[100vh] flex items-center justify-center relative">
+//                 {/* Image Display */}
+//                 <div className="w-full h-full overflow-hidden rounded-lg shadow-lg flex items-center justify-center">
+//                     <img
+//                         ref={imageRef}
+//                         src={products[currentImage].image}
+//                         alt={products[currentImage].title || 'Product Image'}
+//                         className="object-contain w-full h-full rounded-lg"
+//                         onError={(e) => (e.target.src = 'placeholder.jpg')}
+//                     />
+//                 </div>
+
+//                 {/* Dots for Navigation */}
+//                 <div className="absolute bottom-5 flex space-x-2">
+//                     {products.map((_, index) => (
+//                         <button
+//                             key={index}
+//                             onClick={() => handleDotClick(index)}
+//                             className={`w-3 h-3 rounded-full transition-colors ${
+//                                 currentImage === index ? 'bg-blue-600' : 'bg-gray-300'
+//                             }`}
+//                         ></button>
+//                     ))}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default ProductCarousel;
+
+
+
+// import { useEffect, useState, useRef } from 'react';
+// import gsap from 'gsap';
+
+// const ProductCarousel = () => {
+//     const products = [
+//         { image: 'products8.jpg', title: 'HDPE Pipe 20mm' },
+//         { image: 'products3.jpg', title: 'Sprinkler System' },
+//         { image: 'product4.jpg', title: 'HDPE Fittings' },
+//         { image: 'products18.jpg' },
+//         { image: 'products12.jpg', title: 'HDPE Fittings' },
+//         { image: 'products10.jpg' },
+//         { image: 'products11.jpg' },
+//         { image: 'products17.jpg' },
+//     ];
+
+//     const [currentImage, setCurrentImage] = useState(0);
+//     const imageRef = useRef(null);
+
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             setCurrentImage((prev) => (prev + 1) % products.length);
+//         }, 3000); // Auto-transition every 3 seconds
+
+//         return () => clearInterval(interval);
+//     }, [products.length]);
+
+//     useEffect(() => {
+//         // GSAP animation for image transitions
+//         if (imageRef.current) {
+//             gsap.fromTo(
+//                 imageRef.current,
+//                 { opacity: 0, x: 50 },
+//                 { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }
+//             );
+//         }
+//     }, [currentImage]);
+
+//     const handleDotClick = (index) => {
+//         setCurrentImage(index);
+//     };
+
+//     return (
+//         <div className="bg-gray-50 w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10 pb-20">
+//             <h2 className="text-center text-4xl font-bold text-blue-600 mb-6 md:mb-12">Our Products</h2>
+//             <div className="w-full max-w-7xl h-[100vh] flex items-center justify-center relative">
+//                 {/* Image Display */}
+//                 <div className="w-full h-full overflow-hidden rounded-lg shadow-lg flex items-center justify-center">
+//                     <img
+//                         ref={imageRef}
+//                         src={products[currentImage].image}
+//                         alt={products[currentImage].title || 'Product Image'}
+//                         className="w-auto h-full max-h-full max-w-none object-cover rounded-lg"
+//                         onError={(e) => (e.target.src = 'placeholder.jpg')}
+//                     />
+//                 </div>
+
+//                 {/* Dots for Navigation */}
+//                 <div className="absolute bottom-5 flex space-x-2">
+//                     {products.map((_, index) => (
+//                         <button
+//                             key={index}
+//                             onClick={() => handleDotClick(index)}
+//                             className={`w-3 h-3 rounded-full transition-colors ${
+//                                 currentImage === index ? 'bg-blue-600' : 'bg-gray-300'
+//                             }`}
+//                         ></button>
+//                     ))}
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default ProductCarousel;
+
+
+
+import { useEffect, useState, useRef } from 'react';
+import gsap from 'gsap';
 
 const ProductCarousel = () => {
     const products = [
-        { image: 'products1.jpg', title: 'HDPE Pipe 20mm', description: 'Ideal for residential and industrial water transport.' },
-        { image: 'products3.jpg', title: 'Sprinkler System', description: 'Efficient water distribution for large gardens.' },
-        { image: 'products7.jpg', title: 'HDPE Fittings', description: 'Durable fittings compatible with a range of HDPE pipes.' },
-        { image: 'products13.jpg', title: 'HDPE Fittings', description: 'Durable fittings compatible with a range of HDPE pipes.' },
+        { image: 'products8.jpg', title: 'HDPE Pipe 20mm' },
+        { image: 'products3.jpg', title: 'Sprinkler System' },
+        { image: 'product4.jpg', title: 'HDPE Fittings' },
+        { image: 'products18.jpg' },
+        { image: 'products12.jpg', title: 'HDPE Fittings' },
+        { image: 'products10.jpg' },
+        { image: 'products11.jpg' },
+        { image: 'products17.jpg' },
     ];
 
-    const [isMounted, setIsMounted] = useState(false);
+    const [currentImage, setCurrentImage] = useState(0);
+    const imageRef = useRef(null);
 
     useEffect(() => {
-        setIsMounted(true); // Ensure component mounts only once
-        console.log('Component mounted');
-    }, []);
+        const interval = setInterval(() => {
+            setCurrentImage((prev) => (prev + 1) % products.length);
+        }, 3000); // Auto-transition every 3 seconds
 
-    if (!isMounted) return null;
+        return () => clearInterval(interval);
+    }, [products.length]);
+
+    useEffect(() => {
+        // GSAP animation for image transitions
+        if (imageRef.current) {
+            gsap.fromTo(
+                imageRef.current,
+                { opacity: 0, x: 50 },
+                { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }
+            );
+        }
+    }, [currentImage]);
+
+    const handleDotClick = (index) => {
+        setCurrentImage(index);
+    };
 
     return (
         <div className="bg-gray-50 w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10 pb-20">
             <h2 className="text-center text-4xl font-bold text-blue-600 mb-6 md:mb-12">Our Products</h2>
-            <Carousel
-                className="w-full max-w-5xl h-[80vh] md:h-[90vh] lg:h-[100vh]"
-                showThumbs={false}
-                infiniteLoop
-                useKeyboardArrows
-                autoPlay
-                interval={3500} // Smooth autoplay
-                transitionTime={700} // Smoother transition effect
-                swipeScrollTolerance={5}
-                showStatus={false} // Hides status to make it look cleaner
-            >
-                {products.map((product, index) => (
-                    <div key={index} className="flex flex-col items-center h-full p-6 md:p-8">
-                        {/* Product Image */}
-                        <div className="w-full h-3/4 flex items-center justify-center overflow-hidden rounded-lg shadow-lg">
-                            <img
-                                src={product.image}
-                                alt={product.title}
-                                className="object-cover w-full h-full rounded-lg"
-                                onError={(e) => (e.target.src = 'placeholder.jpg')}
-                            />
-                        </div>
-                        {/* Product Text */}
-                        <div className="text-center mt-4 p-6 max-w-3xl bg-white bg-opacity-90 rounded-lg shadow-lg z-10">
-                            <h3 className="text-2xl md:text-3xl font-semibold text-blue-600">{product.title}</h3>
-                            <p className="text-base md:text-lg text-gray-700 leading-relaxed mt-2">
-                                {product.description}
-                            </p>
-                        </div>
-                    </div>
-                ))}
-            </Carousel>
+            <div className="w-full max-w-7xl h-[80vh] flex items-center justify-center relative">
+                {/* Image Display */}
+                <div className="w-full h-full overflow-hidden rounded-lg shadow-lg flex items-center justify-center">
+                    <img
+                        ref={imageRef}
+                        src={products[currentImage].image}
+                        alt={products[currentImage].title || 'Product Image'}
+                        className="max-h-full w-auto mx-auto object-contain rounded-lg"
+                        onError={(e) => (e.target.src = 'placeholder.jpg')}
+                    />
+                </div>
+
+                {/* Dots for Navigation */}
+                <div className="absolute bottom-5 flex space-x-2">
+                    {products.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleDotClick(index)}
+                            className={`w-3 h-3 rounded-full transition-colors ${
+                                currentImage === index ? 'bg-blue-600' : 'bg-gray-300'
+                            }`}
+                        ></button>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

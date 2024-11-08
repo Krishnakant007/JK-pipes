@@ -115,6 +115,7 @@ import DetailScreen from './details/DetailScreen';
 import Whatsapp from './components/Whatsapp';
 import IconsWithNames from './components/IconsWithNames';
 import ProductCarousel from './components/ProductCarousel';
+import GardenProduct from './screens/GardenProduct';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -161,6 +162,8 @@ function App() {
         <Route path="/hdpecoil" element={<HDPECoilScreen />} />
         <Route path="/upvc" element={<UPVCProductScreen />} />
         <Route path="/details" element={<DetailScreen />} />
+                <Route path="/Gardens" element={<GardenProduct />} />
+
       </Routes>
       <Footer />
     </Router>

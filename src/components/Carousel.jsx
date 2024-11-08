@@ -816,39 +816,202 @@
 // export default ImageSliderComponent;
 
 
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const ImageSliderComponent = () => {
+//   const imageRef = useRef(null);
+//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+//   // Images for the slider
+//   const images = [
+//     "/img2.jpg",
+//     "/img8.jpg",
+//     "/img3.jpg",
+//     "/soil.jpg",
+//     "/kids.jpg",
+//     "/img5.jpg",
+//   ];
+
+//   useEffect(() => {
+//     const animateImage = () => {
+//       // Animate the image with a smooth zoom-out effect
+//       gsap.fromTo(
+//         imageRef.current,
+//         { scale: 1.1 }, // Start slightly zoomed in
+//         { scale: 1, duration: 4, ease: "power2.out" } // Smooth zoom-out
+//       );
+//     };
+
+//     // Initial animation on component load
+//     animateImage();
+
+//     // Set interval for cycling through images with smooth zoom-out effect
+//     const interval = setInterval(() => {
+//       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+//       animateImage(); // Trigger zoom-out animation on each image change
+//     }, 5000); // Change every 5 seconds
+
+//     return () => clearInterval(interval);
+//   }, [images.length]);
+
+//   return (
+//     <div className="relative flex justify-center items-center w-full h-screen overflow-hidden">
+//       {/* Image Slider with Smooth Zoom-Out Effect */}
+//       <div className="w-full h-full relative">
+//         <img
+//           ref={imageRef}
+//           src={images[currentImageIndex]}
+//           alt={`Slide ${currentImageIndex + 1}`}
+//           className="w-full h-full object-cover"
+//         />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ImageSliderComponent;
+
+
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+
+// const ImageSliderComponent = () => {
+//   const imageRef = useRef(null);
+//   const textRef = useRef(null); // Reference for the text animation
+//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+//   // Images for the slider
+//   const images = [
+//     "/img2.jpg",
+//     "/img8.jpg",
+//     "/img3.jpg",
+//     "/soil.jpg",
+//     "/kids.jpg",
+//     "/img5.jpg",
+//   ];
+
+//   // Corresponding text for each image
+//   const texts = [
+//     "Innovations that change the way we live.",
+//     "Focused on improving the quality of life.",
+//     "Growing responsibly for a better future.",
+//     "Building a sustainable tomorrow.",
+//     "Working towards a future with better living standards and sustainability.",
+//     "Building a future that is responsible and sustainable for all.",
+//   ];
+
+//   useEffect(() => {
+//     const animateImageAndText = () => {
+//       // Animate the image with a smooth zoom-out effect
+//       gsap.fromTo(
+//         imageRef.current,
+//         { scale: 1.1 }, // Start slightly zoomed in
+//         { scale: 1, duration: 4, ease: "power2.out" } // Smooth zoom-out
+//       );
+
+//       // Animate the text fade-in and fade-out
+//       gsap.fromTo(
+//         textRef.current,
+//         { opacity: 0 }, // Start with text hidden
+//         { opacity: 1, duration: 3, ease: "power2.out" } // Fade in with a smooth effect
+//       );
+//     };
+
+//     // Initial animation on component load
+//     animateImageAndText();
+
+//     // Set interval for cycling through images with smooth zoom-out effect
+//     const interval = setInterval(() => {
+//       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+//       animateImageAndText(); // Trigger zoom-out animation and text fade-in on each image change
+//     }, 5000); // Change every 5 seconds
+
+//     return () => clearInterval(interval);
+//   }, [images.length]);
+
+//   return (
+//     <div className="relative flex justify-center items-center w-full h-screen overflow-hidden">
+//       {/* Image Slider with Smooth Zoom-Out Effect */}
+//       <div className="w-full h-full relative">
+//         <img
+//           ref={imageRef}
+//           src={images[currentImageIndex]}
+//           alt={`Slide ${currentImageIndex + 1}`}
+//           className="w-full h-full object-cover"
+//         />
+//         {/* Text overlay */}
+//         <div
+//           ref={textRef}
+//           className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 text-white text-3xl font-bold max-w-lg text-center p-4"
+//           style={{ zIndex: 10 }}
+//         >
+//           {texts[currentImageIndex]}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ImageSliderComponent;
+
+
+
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
+// Ensure you have Oleo Script font imported in your project or add it to the index.html if using React
+// Example: <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+
 const ImageSliderComponent = () => {
   const imageRef = useRef(null);
+  const textRef = useRef(null); // Reference for the text animation
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Images for the slider
   const images = [
     "/img2.jpg",
+    "/img8.jpg",
     "/img3.jpg",
-    "/img1.jpg",
-    "/img4.jpg",
+    "/soil.jpg",
+    "/kids.jpg",
     "/img5.jpg",
   ];
 
+  // Corresponding text for each image
+  const texts = [
+    "Innovations that change the way we live.",
+    "Focused on improving the quality of life.",
+    "Growing responsibly for a better future.",
+    "Building a sustainable tomorrow.",
+    "Working towards a future with better living standards and sustainability.",
+    "Building a future that is responsible and sustainable for all.",
+  ];
+
   useEffect(() => {
-    const animateImage = () => {
+    const animateImageAndText = () => {
       // Animate the image with a smooth zoom-out effect
       gsap.fromTo(
         imageRef.current,
         { scale: 1.1 }, // Start slightly zoomed in
         { scale: 1, duration: 4, ease: "power2.out" } // Smooth zoom-out
       );
+
+      // Animate the text fade-in and fade-out
+      gsap.fromTo(
+        textRef.current,
+        { opacity: 0 }, // Start with text hidden
+        { opacity: 1, duration: 3, ease: "power2.out" } // Fade in with a smooth effect
+      );
     };
 
     // Initial animation on component load
-    animateImage();
+    animateImageAndText();
 
     // Set interval for cycling through images with smooth zoom-out effect
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-      animateImage(); // Trigger zoom-out animation on each image change
+      animateImageAndText(); // Trigger zoom-out animation and text fade-in on each image change
     }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval);
@@ -864,6 +1027,18 @@ const ImageSliderComponent = () => {
           alt={`Slide ${currentImageIndex + 1}`}
           className="w-full h-full object-cover"
         />
+        {/* Text overlay */}
+        <div
+          ref={textRef}
+          className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 text-white text-4xl font-bold max-w-lg text-center p-4"
+          style={{
+            zIndex: 10,
+            fontFamily: "'Oleo Script', cursive", // Apply Oleo Script font
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" // Add a shadow for better contrast on light backgrounds
+          }}
+        >
+          {texts[currentImageIndex]}
+        </div>
       </div>
     </div>
   );

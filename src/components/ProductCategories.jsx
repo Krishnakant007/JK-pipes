@@ -524,7 +524,7 @@ const ProductCategories = () => {
         <section id="products" className="py-16 px-8 bg-gray-200 mt-24">
             <div className="text-center mb-10">
                 <h1 className="text-4xl font-extrabold  text-blue-600 ">Explore Our Product Categories</h1>
-                <p className="text-gray-500 mt-2">We offer a wide range of high-quality pipes for all your needs.</p>
+                <p className="text-gray-500 mt-5 text-xl">We offer a wide range of high-quality pipes for all your needs.</p>
             </div>
 
             <h2 className="text-3xl font-bold mb-6 pl-10">Our Products</h2>
@@ -536,7 +536,7 @@ const ProductCategories = () => {
                     ref={(el) => (productRefs.current[0] = el)}
                 >
                     <h3 className="text-xl font-bold text-center mb-4">SWR Pipes</h3>
-                    <img src="swr.jpg" alt="SWR Pipe" className="h-48 sm:h-56 mx-auto" />
+                    <img src="swr.png" alt="SWR Pipe" className="h-48 sm:h-56 mx-auto" />
                     <div className="flex items-center justify-center mt-4">
                         <h1 className="font-semibold"><span className="font-extrabold text-lg">4 </span> Products Available</h1>
                         <button
@@ -608,7 +608,7 @@ const ProductCategories = () => {
                     ref={(el) => (productRefs.current[4] = el)}
                 >
                     <h3 className="text-xl font-bold text-center mb-4">UPVC Pipes</h3>
-                    <img src="upvc.jpg" alt="UPVC Pipe" className="h-48 sm:h-56 mx-auto" />
+                    <img src="/images/up2.webp" alt="UPVC Pipe" className="h-48 sm:h-56 mx-auto" />
                     <div className="flex items-center justify-center mt-4">
                         <h1 className="font-semibold"><span className="font-extrabold text-lg">2 </span> Products Available</h1>
                         <button
@@ -619,6 +619,25 @@ const ProductCategories = () => {
                         </button>
                     </div>
                 </div>
+                
+
+                <div
+                className="border p-6 sm:p-8 rounded-3xl shadow-xl bg-white hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
+                ref={(el) => (productRefs.current[5] = el)}
+            >
+            <h3 className="text-xl font-bold text-center mb-4 "> GARDEN Pipes</h3>
+            <img src="garden.webp" alt="Garden Pipe" className="h-48 sm:h-56 mx-auto" />
+            <div className="flex items-center justify-center mt-4">
+                <h1 className="font-semibold"><span className="font-extrabold text-lg">1 </span> Products Available</h1>
+                <button
+                    className="mt-4 py-2 w-32 sm:w-auto sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 focus:ring focus:ring-blue-300 block mx-auto"
+                    onClick={() => handleNavigate('/Gardens')}
+                >
+                    View More
+                </button>
+                </div>
+                </div>
+
 
 
            
@@ -635,15 +654,6 @@ export default ProductCategories;
             //     className="border p-6 sm:p-8 rounded-3xl shadow-xl bg-white hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out"
             //     ref={(el) => (productRefs.current[4] = el)}
             // >
-            //     <h3 className="text-xl font-bold text-center mb-4">Garden Pipes</h3>
-            //     <img src="garden.webp" alt="Garden Pipe" className="h-48 sm:h-56 mx-auto" />
-            //     <div className="flex items-center justify-center mt-4">
-            //         <h1 className="font-semibold"><span className="font-extrabold text-lg">1 </span> Products Available</h1>
-            //         <button
-            //             className="mt-4 py-2 w-32 sm:w-auto sm:px-6 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-400 hover:to-purple-600 focus:ring focus:ring-blue-300 block mx-auto"
-            //             onClick={() => handleNavigate('/upvc')}
-            //         >
-            //             View More
-            //         </button>
+                
             //     </div>
             // </div>
